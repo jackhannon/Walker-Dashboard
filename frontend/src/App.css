@@ -1,0 +1,230 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --black: black;
+  --d-500: #003c3c;
+  
+  --p-500: #00dc82;
+  --p-550: rgb(40, 220, 34);
+  --p-560: #136916;
+
+  --p-400: #5d8f81;
+  --p-300: #85aba1;
+  --d-400: #01834d;
+  --w-100: white;
+  --w-500: #f5f3ee;
+  --borderRadius: 4px
+}
+
+#root {
+  width: 100%;
+  padding: 1rem;
+  text-align: center;
+  height: 100vh;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+.dashboard {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  gap: 1rem;
+  grid-template-areas:
+    "agentSkillsContainer agentEnvironmentContainer agentEnvironmentContainer agentSelectorContainer"
+    "agentSkillsContainer agentEnvironmentContainer agentEnvironmentContainer agentComparisonContainer";
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+@media (max-width: 1500px) {
+  .dashboard {
+    width: 100%;
+    height: auto;
+    display: grid;
+    gap: 1rem;
+    grid-template-areas:
+      "agentSkillsContainer agentEnvironmentContainer"
+      "agentComparisonContainer agentSelectorContainer";
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 90vh 60vh;
+  }
+}
+
+
+@media (max-width: 1100px) {
+  .dashboard {
+    width: 100%;
+    height: auto;
+    display: grid;
+    gap: 1rem;
+    grid-template-areas:
+      "agentEnvironmentContainer"
+      "agentSkillsContainer"
+      "agentComparisonContainer"
+      "agentSelectorContainer";
+    grid-template-columns: 1fr;
+    grid-template-rows: 96.8vh 96.8vh 90vh 90vh;
+  }
+}
+
+.dashboard > div {
+  border: 1px solid black;
+  position: relative;
+  overflow: hidden;
+}
+
+
+.agentSkillsContainer {
+  grid-area: agentSkillsContainer;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--d-500);
+}
+
+.agentEnvironmentContainer {
+  grid-area: agentEnvironmentContainer;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  position: relative;
+  overflow-x: hidden;
+  background-color: var(--d-500);
+}
+
+
+.agentSelectorContainer {
+  grid-area: agentSelectorContainer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 1;
+  width: 100%;
+  height: 100%;
+  background-color: var(--d-500);
+}
+
+.agentComparisonContainer {
+  grid-area: agentComparisonContainer;
+  width: 100%;
+  min-height: 100%;
+  background-color: var(--d-500);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.environment {
+  position: absolute;
+  overflow: visible;
+  display: flex;
+  bottom: 50%;
+  justify-self: center;
+  transform: translateY(50%) scaleY(-1);
+  width: 300px;
+  height: 600px;
+}
+
+
+
+.distanceTraveled {
+  color: var(--p-500);
+  position: absolute;
+  top: .5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+.environment path, .minimap path {
+  stroke: var(--p-500);
+  fill: transparent;
+}
+
+/* .environment {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border: 1px solid black;
+} */
+
+.hull {
+  position: relative;
+}
+
+.leg {
+  position: absolute;
+  transform-origin: top;
+  top: 85%;
+}
+
+.leg:last-child {
+  right: 0px;
+  top: 85%;
+
+}
+
+.upperLeg {
+  /* transform-origin: 0%;
+  bottom: 0;
+  border-radius: 25px;
+  position: relative; */
+  background-color: var(--p-500);
+  /* transform-origin: center 10%; */
+}
+
+.lowerLeg {
+  /* transform-origin: 0%;
+  position: relative;
+  top: 85%;
+  border-radius: 25px; */
+  background-color: var(--p-500);
+  /* transform-origin: center 10%; */
+}
+
+/* 
+.foot:hover {
+} */
+
+
+.speedometer {
+  
+}
+
+
+.circularButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.5rem;
+  min-width: 2.5rem;
+  border-radius: 100vh;
+  border: none;
+  background-color: var(--p-500);
+  color: white;
+  font-size: 1.5rem;
+}
+
+
+.spinner {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   
+   height: 100%;
+}

@@ -1,0 +1,14 @@
+.tabs {
+ display: flex;
+ position: absolute;
+ left: 50%;
+ transform: translateX(-50%);
+ background-color: rgb(227, 255, 255);
+ top: 2rem;
+ z-index: 999;
+}
+
+.tab {
+  padding: .4rem .6rem;
+}
+
