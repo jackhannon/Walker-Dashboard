@@ -4,10 +4,10 @@ type Props = {
 }
 const LowerLeg: React.FC<Props> = ({coordinate, angle}) => {
   const lowerLegPath = `
-    M${coordinate[0] - 1/10},${coordinate[1] + 6/10}
-    L${coordinate[0] + 1/10},${coordinate[1] + 6/10}
-    L${coordinate[0] + 1/10},${coordinate[1] - 6/10}
-    L${coordinate[0] - 1/10},${coordinate[1] - 6/10}
+    M${coordinate[0]},${coordinate[1]}
+    L${coordinate[0]},${coordinate[1]}
+    L${coordinate[0]},${coordinate[1]}
+    L${coordinate[0]},${coordinate[1]}
     Z
   `
   return (

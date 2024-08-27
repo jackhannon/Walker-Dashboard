@@ -7,10 +7,10 @@ type Props = {
 
 const UpperLeg:React.FC<Props> = ({coordinate, angle}) => {
   const upperLegPath = `
-    M${coordinate[0] - 1/10},${coordinate[1] + 6/10}
-    L${coordinate[0] + 1/10},${coordinate[1] + 6/10}
-    L${coordinate[0] + 1/10},${coordinate[1] - 6/10}
-    L${coordinate[0] - 1/10},${(coordinate[1] - 6/10)}
+    M${coordinate[0]},${coordinate[1]}
+    L${coordinate[0]},${coordinate[1]}
+    L${coordinate[0]},${coordinate[1]}
+    L${coordinate[0]},${coordinate[1]}
     Z
   `
 
