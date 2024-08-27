@@ -1,0 +1,422 @@
+.container {
+  position: relative;
+  --module-sides-padding: 2rem;
+  --module-width: 28.6%;
+  /* --module-height: 85px; */
+  --module-border-width: 4px;
+  --connector-height: 3rem;
+  --module-inactive-border-width: 4px;
+  --outer-tree-module-height: 100px;
+  --outer-tree-label-width: 7.5rem;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  max-width: 439px;
+}
+
+.view {
+  width: 100%;
+  height: 100%;
+  padding: 1.5rem .5rem .5rem .5rem;
+  display: block;
+}
+
+.treeContainer {
+  overflow: visible;
+  width: 100%;
+}
+
+.modules {
+  position: relative;
+}
+
+.layer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+}
+
+.module {
+  background-color: var(--p-500);
+}
+
+.treeModules {
+  width: 100%;
+  height: 100%;
+  padding: 1px 0;
+  display: block;
+  margin: 0 auto;
+}
+
+.outerTreeModule {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  z-index: 1000;
+  width: 100%;
+}
+
+/* .outerTreeModule  */
+
+.outerModuleLabel {
+  background-color: var(--p-500);
+  color: white;
+  width: 30px;
+  height: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10vh;
+  font-size: .25rem;
+  margin: 0 auto;
+
+  /* display: flex;
+  justify-content: center;
+  flex-direction: column; */
+
+}
+
+
+.inactiveConnectors {
+  stroke-width: 1.5px;
+  stroke: black;
+  fill: transparent;
+  inset: 0;
+  width: 100%;
+  z-index: 998;
+  position: relative;
+}
+
+
+
+.perceptionLayer {
+  width: 100%;
+  position: relative;
+  padding: 27px 0 27px 0;
+
+}
+
+
+.perceptiveModuleContainer {
+  position: relative;
+  overflow: visible;
+  width: var(--module-width);
+}
+
+.perceptiveModule {
+  position: relative;
+  height: 20px;
+  width: 29.1px;
+}
+
+.perceptiveModuleShape {
+  height: 100%;
+  width: 100%;
+  background-color: var(--p-500);
+  clip-path: polygon(14% 0%, 86% 0%, 100% 50%, 86% 100%, 14% 100%, 0% 50%);
+  position: relative;
+
+}
+
+
+
+
+
+
+
+.selectiveLayer {
+  position: relative;
+  justify-content: center;
+}
+
+.selectiveModuleInfoPosition {
+  right: 2rem;
+  top: .5rem
+}
+
+.selectiveModuleContainer {
+  position: relative;
+}
+
+.selectiveModule {
+  background-color: var(--p-500);
+  position: relative;
+  height: 100%;
+  z-index: 997;
+  width: 30px;
+  height: 30px;
+  overflow: visible;
+}
+
+
+
+
+.selectiveModule, .selectiveModule::before {
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+
+
+
+
+.skillLayer {
+  padding: 27px 0 27px 0;
+  position: relative;
+}
+
+
+.skillModuleContainer {
+  padding-top: 1.25rem;
+  position: relative;
+  width: var(--module-width);
+  padding: var(--connector-height) 0 0 0;
+}
+
+.skillModule {
+  height: 20px;
+  width: 29.1px;
+  position: relative;
+  background-color: var(--p-500);
+  z-index: 999;
+}
+
+.skillModuleInfoPosition {
+  right: .2rem;
+  top: .5rem
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* svg trace */
+
+
+
+.svgOutline {
+  z-index: 999;
+  fill: transparent;
+
+}
+
+.svgOutline path {
+  fill: transparent;
+  stroke: var(--p-500);
+  stroke-width: 3px;
+  stroke-dasharray: 2500;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  animation: draw 1s linear forwards;
+  z-index: 1000;
+}
+
+.moduleLineBlur {
+  z-index: 999;
+  --glow-blur-size: 5px;
+  stroke-width: 5px;
+  filter: blur(var(--glow-blur-size));
+}
+
+.inputConnector path {
+
+}
+
+.perceptiveModuleContainer .svgOutline path {
+  animation-delay: 200ms;
+}
+
+.perceptionModuleConnector .glowBlur, 
+.perceptionModuleConnector .glowLine {
+  animation-delay: 400ms;
+} 
+
+.selectiveModuleContainer .svgOutline path {
+  animation-delay: 600ms;
+}
+
+.skillModuleConnector .glowBlur, 
+.skillModuleConnector .glowLine {
+  animation-delay: 800ms;
+}
+
+.skillModule .svgOutline path {
+  animation-delay: 1000ms;
+}
+
+.decisionLayer .svgOutline path  {
+  animation-delay: 1200ms;
+
+}
+
+@keyframes draw {
+  from {
+    stroke-dashoffset: 2500;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.glowBlur {
+  z-index: 999;
+  --glow-blur-size: .8px;
+  stroke-width: 6px;
+  filter: blur(var(--glow-blur-size));
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* network */
+
+.networkContainer {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.network {
+  height: 100%;
+  width: 100%;
+}
+
+.networkLayers {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.networkLayer {
+  height: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+
+.networkModuleContainer {
+  position: relative;
+}
+
+.networkModule {
+  height: 15px;
+  width: 24px;
+  position: relative;
+  background-color: var(--p-500);
+  z-index: 999;
+  box-shadow: 0 0 1.5px var(--p-500);
+}
+
+
+
+
+.networkInfoToggle {
+  background-color: var(--p-540);
+  width: 5px;
+  height: 5px;
+  font-size: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1px 1px 0 auto;
+  border-radius: 100vh;
+  position: absolute;
+  z-index: 1000;
+}
+
+
+.networkInfoToggle svg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+
+}
+
+
+
+.networkIcon {
+  position: absolute;
+  z-index: 999;
+  top: 50%;
+  transform: translate(50%, -50%);
+  right: 50%;
+  color: var(--d-500);
+  font-size: .4rem;
+}
+
+
+
+
+
+
+
+/* toggle */
+
+
+
+
+.infoToggle {
+  background-color: var(--p-540);
+  width: 6px;
+  height: 6px;
+  font-size: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2px 0 0 auto;
+  border-radius: 100vh;
+  position: absolute;
+  z-index: 1000;
+}
+
+.skillInfoToggle {
+  background-color: var(--p-540);
+  width: 6px;
+  height: 6px;
+  font-size: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2px 2px 0 auto;
+  border-radius: 100vh;
+  position: absolute;
+  z-index: 1000;
+}
+
+.icon {
+  position: absolute;
+  z-index: 999;
+  top: 50%;
+  transform: translate(50%, -50%);
+  right: 50%;
+  color: var(--d-500);
+  font-size: .5rem;
+}
+
+

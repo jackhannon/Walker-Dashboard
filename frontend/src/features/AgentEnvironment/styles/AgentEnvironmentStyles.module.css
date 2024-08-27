@@ -1,0 +1,131 @@
+.parametersContainer {
+  position: absolute;
+}
+
+.settingsButton {
+  position: absolute;
+  right: .5rem;
+  top: .5rem;
+}
+
+.agentInfoTag {
+  position: absolute;
+  background-color: var(--p-500);
+  font-size: .8rem;
+  width: 5rem;
+  height: auto;
+  padding: .4rem;
+  border-radius: 4px;
+  z-index: 999;
+  justify-self: center;
+  
+  transition: width linear .6s;
+ }
+ 
+ .hoveredAgentTag {
+   width: 10rem;
+ }
+ 
+ .unhoveredAgentTag {
+ }
+ 
+ 
+ .agentInfoTag p {
+   white-space: nowrap;
+ }
+ 
+ .tagTail {
+   position: absolute;
+   width: 0;
+   height: 0;
+   border-left: 0.5rem solid transparent;
+   border-right: 0.5rem solid transparent;
+   border-top: 0.5rem solid var(--p-500);
+   bottom: -0.5rem;
+   left: 50%;
+   transform: translateX(-50%);
+ }
+ 
+
+.miniMap {
+  position: relative;
+  color: var(--p-500);
+  display: flex;
+  flex-direction: column;
+}
+
+.miniMap svg {
+  inset: 0;
+  transform:scaleY(-1);
+  border: 1px solid var(--p-500);
+  width: 300px;
+  height: 170px;
+}
+
+.miniMap path, .miniMap path {
+  stroke: var(--p-500);
+  fill: transparent;
+}
+
+.extraInfoContainer {
+  display: flex;
+  height: auto;
+  width: 100%;
+  justify-content: end;
+  align-self: end;
+  padding-bottom: 1rem;
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+
+.environment {
+  position: absolute;
+  overflow: visible;
+  display: flex;
+  bottom: 50%;
+  justify-self: center;
+  transform: translateY(50%) scaleY(-1);
+  width: 300px;
+  height: 300px;
+}
+
+.distanceTraveled {
+  color: var(--p-500);
+  position: absolute;
+  top: .5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+.environment path, .minimap path {
+  stroke: var(--p-500);
+  fill: transparent;
+}
+
+.hull {
+  position: relative;
+}
+
+.leg {
+  position: absolute;
+  transform-origin: top;
+  top: 85%;
+}
+
+.leg:last-child {
+  right: 0px;
+  top: 85%;
+}
+
+.upperLeg {
+  background-color: var(--p-500);
+}
+
+.lowerLeg {
+  background-color: var(--p-500);
+}
+
+.speedometer {
+  
+}

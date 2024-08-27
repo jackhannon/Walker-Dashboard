@@ -1,0 +1,55 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --black: black;
+  --d-500: #003c3c;
+  --p-500: #00dc82;
+  --p-550: rgb(40, 220, 34);
+  --p-540: rgb(3, 163, 94);
+  --p-560: #136916;
+
+  --p-400: #5d8f81;
+  --p-300: #85aba1;
+  --d-400: #01834d;
+  --w-100: white;
+  --w-500: #f5f3ee;
+  --borderRadius: 4px;
+}
+
+#root {
+  width: 100%;
+  padding: 1rem;
+  text-align: center;
+  height: 100vh;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spinner {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100%;
+}
+
+
+.circularButtonOne {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.5rem;
+  min-width: 2.5rem;
+  border-radius: 100vh;
+  border: none;
+  background-color: var(--p-500);
+  color: white;
+  font-size: 1.5rem;
+}

@@ -1,0 +1,106 @@
+.dashboard {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  gap: 1rem;
+  grid-template-areas:
+    "agentSkillsContainer agentEnvironmentContainer agentEnvironmentContainer agentSelectorContainer"
+    "agentSkillsContainer agentEnvironmentContainer agentEnvironmentContainer agentComparisonContainer";
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+@media (max-width: 1500px) {
+  .dashboard {
+    width: 100%;
+    height: auto;
+    display: grid;
+    gap: 1rem;
+    grid-template-areas:
+      "agentSkillsContainer agentEnvironmentContainer"
+      "agentComparisonContainer agentSelectorContainer";
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 90vh 60vh;
+  }
+}
+
+
+@media (max-width: 1100px) {
+  .dashboard {
+    width: 100%;
+    height: auto;
+    display: grid;
+    gap: 1rem;
+    grid-template-areas:
+      "agentEnvironmentContainer"
+      "agentSkillsContainer"
+      "agentComparisonContainer"
+      "agentSelectorContainer";
+    grid-template-columns: 1fr;
+    grid-template-rows: 96.8vh 96.8vh 90vh 90vh;
+  }
+}
+
+.dashboard > div {
+  border: 1px solid black;
+  position: relative;
+  overflow: hidden;
+}
+
+
+.agentSkillsContainer {
+  grid-area: agentSkillsContainer;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--d-500);
+}
+
+.agentEnvironmentContainer {
+  grid-area: agentEnvironmentContainer;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  position: relative;
+  overflow-x: hidden;
+  background-color: var(--d-500);
+}
+
+.agentSelectorContainer {
+  grid-area: agentSelectorContainer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 1;
+  width: 100%;
+  height: 100%;
+  background-color: var(--d-500);
+}
+
+.agentComparisonContainer {
+  grid-area: agentComparisonContainer;
+  width: 100%;
+  min-height: 100%;
+  background-color: var(--d-500);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.label {
+  position: absolute;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+  
+  color: white;
+}
+
+
+.icon {
+  min-height: 100%;
+  min-width: 100%;
+}
