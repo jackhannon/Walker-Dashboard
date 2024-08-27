@@ -7,6 +7,5 @@ type Params = {
 }
 
 export function connectToSocket(params: Params) {
-  console.log()
-  return io(import.meta.env.SOCKET_URL || `http://localhost:4000`, params)
+  return io(import.meta.env.VITE_API_URL, params)
 }
