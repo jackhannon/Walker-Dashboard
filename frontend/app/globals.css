@@ -33,6 +33,7 @@
       --ring: 222.2 84% 4.9%;
 
       --radius: 0.5rem;
+<<<<<<< HEAD
 
       --black: black;
       --d-500: #003c3c;
@@ -47,6 +48,8 @@
       --w-100: white;
       --w-500: #f5f3ee;
       --borderRadius: 4px
+=======
+>>>>>>> 0bd6dff5292eca033f62115e5b2437bd89a66230
     }
 
     .dark {

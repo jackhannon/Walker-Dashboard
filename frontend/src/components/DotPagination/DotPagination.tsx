@@ -24,7 +24,6 @@ const DotPagination: React.FC<Props> = ({children, handleChange}) => {
     setActiveIndex((prevIndex) => {
       const newActiveIndex = prevIndex === totalChildren - 1 ? 0 : prevIndex + 1
       handleChange(newActiveIndex)
-      console.log(newActiveIndex)
       return newActiveIndex
     });
   };

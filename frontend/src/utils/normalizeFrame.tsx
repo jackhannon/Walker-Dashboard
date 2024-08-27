@@ -1,4 +1,4 @@
-import { Frame } from "../types"
+import { Frame, RawFrame} from "../types"
 
 
 function radiansToDegrees(radians: number) {
@@ -12,35 +12,35 @@ function radiansToDegreesLowerLeg(radians: number) {
 }
 
 
-function normalizeFrame(frame): Frame {
+function normalizeFrame(frame: RawFrame): Frame {
   const hull = {
-    angle: radiansToDegrees(parseFloat(frame["Hull angle"])),
-    horizontalVelocity: parseFloat(frame["Hull horizontal speed"]),
-    verticalVelocity: parseFloat(frame["Hull vertical speed"]),
+    angle: radiansToDegrees(frame["Hull angle"]),
+    horizontalVelocity: frame["Hull horizontal speed"],
+    verticalVelocity: frame["Hull vertical speed"],
     coordinate: frame["Hull position"],
   }
   const leftLeg = {
     hip: {
-      angle: radiansToDegrees(parseFloat(frame["Hip 1 angle"])),
+      angle: radiansToDegrees(frame["Hip 1 angle"]),
       coordinate: frame["Leg 1 position"]
     },
     knee: {
-      angle: radiansToDegreesLowerLeg(parseFloat(frame["Knee 1 angle"])),
+      angle: radiansToDegreesLowerLeg(frame["Knee 1 angle"]),
       coordinate: frame["Leg 2 position"]
     },
-    isContactingGround: Boolean(parseFloat(frame["Leg 1 ground contact"]))
+    isContactingGround: Boolean(frame["Leg 1 ground contact"])
   }
   
   const rightLeg = {
     hip: {
-      angle: radiansToDegrees(parseFloat(frame["Hip 2 angle"])),
+      angle: radiansToDegrees(frame["Hip 2 angle"]),
       coordinate: frame["Leg 3 position"]
     },
     knee: {
-      angle: radiansToDegreesLowerLeg(parseFloat(frame["Knee 2 angle"])),
+      angle: radiansToDegreesLowerLeg(frame["Knee 2 angle"]),
       coordinate: frame["Leg 4 position"]
     },
-    isContactingGround: Boolean(parseFloat(frame["Leg 2 ground contact"]))
+    isContactingGround: Boolean(frame["Leg 2 ground contact"])
   }
 
   return {hull, leftLeg, rightLeg}

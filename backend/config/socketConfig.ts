@@ -1,5 +1,5 @@
 import { Socket } from "socket.io";
-import walkData from "../data/walkDataSample.js";
+import {walkData} from "../data/walkData";
 import getFrameFromIndex from "../utils/getNextFrame.js";
 import envConfig from "./envConfig.js";
 
@@ -16,6 +16,7 @@ function socketConfig() {
 
   io.on("connection", (socket: Socket) => {
     const username = socket.handshake.query.username as string;
+    console.log(socket.handshake.query.username)
 
     if (!username) {
       console.log("Connection attempt without username. Rejecting.");
@@ -44,11 +45,11 @@ function socketConfig() {
     socket.on('reset', () => {
       index = 0;
       console.log("resetting environment");
-
     })
 
     const intervalId = setInterval(() => {
       io.emit("frame", getFrameFromIndex(index))
+
       index+=1;
       if (index > walkData.length-1) {
         index = 0;

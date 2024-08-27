@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { connectToSocket } from './services/robotServices';
 import normalizeFrame from './utils/normalizeFrame';
-import { Frame } from './types';
+import { Frame, RawFrame } from './types';
 
 type Agent = {
   type: string;
@@ -32,7 +32,7 @@ export const useAgentStore = create<State>((set) => {
     set({ isConnected: false });
   }
 
-  function onFrameGet(frame: Frame) {
+  function onFrameGet(frame: RawFrame) {
     const normalizedFrame = normalizeFrame(frame);
     set({ frame: normalizedFrame });
   }

@@ -1,4 +1,4 @@
-import walkData from "../data/walkDataSample"
+import {walkData} from "../data/walkData"
 
 function getFrameFromIndex(index: number) {
   return walkData[index]
