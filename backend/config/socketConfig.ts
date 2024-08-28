@@ -50,14 +50,14 @@ function socketConfig() {
       console.log("resetting environment");
     })
 
-    // const intervalId = setInterval(() => {
-    //   io.emit("frame", getFrameFromIndex(index))
+    const intervalId = setInterval(() => {
+      io.emit("frame", getFrameFromIndex(index))
 
-    //   index+=1;
-    //   if (index > walkData.length-1) {
-    //     index = 0;
-    //   }
-    // }, 20)
+      index+=1;
+      if (index > walkData.length-1) {
+        index = 0;
+      }
+    }, 20)
   });
 
   io.listen(SOCKET_PORT);
