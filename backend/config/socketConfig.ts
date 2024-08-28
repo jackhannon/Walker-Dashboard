@@ -2,15 +2,18 @@ import { Socket } from "socket.io";
 import {walkData} from "../data/walkData";
 import getFrameFromIndex from "../utils/getNextFrame.js";
 import envConfig from "./envConfig.js";
+import { corsOptions } from "./corsOptions.js";
 
 function socketConfig() {
   const SOCKET_PORT = Number(envConfig.SOCKET_PORT) || 4000;
   const { Server } = require("socket.io");
-  const io = new Server({
+  const io = new Server(
+    {
     cors: {
-      origin: "http://localhost:5173"
+      origin: corsOptions.origin()
     }
-  });
+  }
+);
   
   const connectedUsers = new Map<string, Socket>();
 
@@ -47,14 +50,14 @@ function socketConfig() {
       console.log("resetting environment");
     })
 
-    const intervalId = setInterval(() => {
-      io.emit("frame", getFrameFromIndex(index))
+    // const intervalId = setInterval(() => {
+    //   io.emit("frame", getFrameFromIndex(index))
 
-      index+=1;
-      if (index > walkData.length-1) {
-        index = 0;
-      }
-    }, 20)
+    //   index+=1;
+    //   if (index > walkData.length-1) {
+    //     index = 0;
+    //   }
+    // }, 20)
   });
 
   io.listen(SOCKET_PORT);

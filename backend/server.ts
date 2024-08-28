@@ -10,7 +10,7 @@ import socketConfig from "./config/socketConfig.js";
 
 
 async function startServer() {
-  const PORT = Number(envConfig.PORT);
+  const PORT = Number(envConfig.PORT) || 4000;
 
   const app: Express = express();
   socketConfig()
