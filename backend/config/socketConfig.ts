@@ -11,30 +11,30 @@ function socketConfig() {
     cors: {
       origin: corsOptions.origin
     }
-  }
-);
+  });
   
-  const connectedUsers = new Map<string, Socket>();
+  // const connectedUsers = new Map<string, Socket>();
 
   io.on("connection", (socket: Socket) => {
-    const username = socket.handshake.query.username as string;
-    console.log(socket.handshake.query.username)
+    // const username = socket.handshake.query.username as string;
+    // console.log(socket.handshake.query.username)
+    io.emit("frame", "Im working")
 
-    if (!username) {
-      console.log("Connection attempt without username. Rejecting.");
-      socket.disconnect(true);
-      return;
-    }
+    // if (!username) {
+    //   console.log("Connection attempt without username. Rejecting.");
+    //   socket.disconnect(true);
+    //   return;
+    // }
 
-     if (connectedUsers.has(username)) {
-      const existingSocket = connectedUsers.get(username);
-      console.log(`User ${username} already connected. Rejecting new connection.`);
-      existingSocket?.disconnect(true);
-    }
+    // if (connectedUsers.has(username)) {
+    //   const existingSocket = connectedUsers.get(username);
+    //   console.log(`User ${username} already connected. Rejecting new connection.`);
+    //   existingSocket?.disconnect(true);
+    // }
 
-    connectedUsers.set(username, socket);
+    // connectedUsers.set(username, socket);
 
-    console.log(`User ${username} connected with socket id: ${socket.id}`);
+    // console.log(`User ${username} connected with socket id: ${socket.id}`);
 
     let index = 0
 
