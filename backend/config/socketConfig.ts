@@ -7,10 +7,9 @@ import { corsOptions } from "./corsOptions.js";
 function socketConfig() {
   const SOCKET_PORT = Number(envConfig.SOCKET_PORT) || 4000;
   const { Server } = require("socket.io");
-  const io = new Server(
-    {
+  const io = new Server({
     cors: {
-      origin: corsOptions.origin()
+      origin: corsOptions.origin
     }
   }
 );
