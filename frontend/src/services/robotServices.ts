@@ -1,9 +1,9 @@
 import { io } from 'socket.io-client';
 
 type Params = {
-   query: {
+  query: {
     username: string
-   }
+  }
 }
 
 export function connectToSocket(params: Params) {

@@ -1,7 +1,7 @@
 import { create } from 'zustand';
-import { connectToSocket } from './services/robotServices';
 import normalizeFrame from './utils/normalizeFrame';
-import { Frame, RawFrame } from './types';
+import { Frame, RawFrame } from '../../types';
+import { socket } from './services/socket';
 
 type Agent = {
   type: string;
@@ -18,33 +18,17 @@ type State = {
 };
 
 export const useAgentStore = create<State>((set) => {
-  const socket = connectToSocket({
-    query: {
-      username: 'user1',
-    },
-  });
-
-  function onConnect() {
-    set({ isConnected: true });
-  }
-
-  function onDisconnect() {
-    set({ isConnected: false });
-  }
 
   function onFrameGet(frame: RawFrame) {
+    console.log(frame)
     const normalizedFrame = normalizeFrame(frame);
     set({ frame: normalizedFrame });
   }
 
-  socket.on('connect', onConnect);
-  socket.on('disconnect', onDisconnect);
-  socket.on('frame', onFrameGet);
-
   function reset() {
     socket.emit('reset');
   }
-
+  
   function changeActiveAgent(index: number) {
     set({ activeAgentIndex: index });
     reset()
@@ -95,5 +79,7 @@ export const useAgentStore = create<State>((set) => {
     isConnected: false,
     changeActiveAgent,
     reset,
+    onFrameGet,
   };
 });
+
