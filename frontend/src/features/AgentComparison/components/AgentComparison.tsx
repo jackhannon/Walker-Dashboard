@@ -85,10 +85,10 @@ const AgentComparison: React.FC<Props> = ({ isLoading }) => {
         .style('fill', 'none')
         .attr('stroke', () => '#00dc82');
 
-    const length = path.node()?.getTotalLength();
+    const length = path?.node()?.getTotalLength();
     
     path.attr("stroke-dasharray", length + " " + length)
-    .attr("stroke-dashoffset", length)
+    .attr("stroke-dashoffset", length || 0)
     .transition()
     .ease(d3.easeLinear)
     .attr("stroke-dashoffset", 0)
@@ -132,7 +132,7 @@ const AgentComparison: React.FC<Props> = ({ isLoading }) => {
     return () => {
         d3.select(element).selectAll('*').remove();
     };
-  }, [])
+  }, [margin.bottom, margin.left, margin.right, margin.top])
 
 
 
