@@ -27,6 +27,6 @@
       ]
     }
   },
-  "include": ["src", "data/terrainDataSample.ts", "src/store.tsx"],
+  "include": ["src", "data/terrainDataSample.ts", "src/store.tsx", "types.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
