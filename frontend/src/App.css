@@ -18,6 +18,9 @@
   --w-100: white;
   --w-500: #f5f3ee;
   --borderRadius: 4px;
+
+  color: var(--p-500);
+  background-color: #242424;
 }
 
 #root {

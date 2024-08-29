@@ -8,6 +8,7 @@
   width: 12rem;
   font-size: 1.3rem;
   text-align: left;
+  z-index: 999;
 }
 
 .radios {

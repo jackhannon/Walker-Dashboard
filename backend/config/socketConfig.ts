@@ -16,9 +16,7 @@ function socketConfig() {
 
 
   io.on("connection", (socket: Socket) => {
-
      let index = 0
-
 
     const intervalId = setInterval(() => {
       socket.emit("frame", getFrameFromIndex(index))
