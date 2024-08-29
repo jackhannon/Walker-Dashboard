@@ -1,12 +1,11 @@
 import Robot from "./Robot"
-import TerrainData from "../../../../data/terrainDataSample"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faGear } from "@fortawesome/free-solid-svg-icons"
 import { useRef, useState } from "react"
 import AgentEnvironmentStyles from '../styles/AgentEnvironmentStyles.module.css'
 import AgentParametersTab from "@/features/AgentParameters/components/AgentParametersTab"
 import * as d3 from 'd3';
-import { Terrain } from "../../../types"
+import { Terrain } from "../../../../types"
 import EnvironmentMinimap from "./EnvironmentMinimap"
 import DashBoardStyles from '../../../DashBoardStyles.module.css'
 import Spinner from "@/components/Spinner"
@@ -33,11 +32,15 @@ type Props = {
 }
 
 const AgentEnvironment:React.FC<Props> = ({isLoading}) => {
-  const frame = useAgentStore(state => state.frame);
+  const {frame, terrain } = useAgentStore(state => {
+    return {
+      frame: state.frame, 
+      terrain: state.terrain
+    }
+  });
 
 
   const [isSettingsOpen, setIsSettingsOpen] = useState(false)
-  const [isTagHovered, setTagHover] = useState(false)
 
   const svgRef = useRef<SVGSVGElement | null>(null);
   const tagHeight = useRef<number>(-9999);
@@ -58,8 +61,8 @@ const AgentEnvironment:React.FC<Props> = ({isLoading}) => {
     setIsSettingsOpen(prev => !prev)
   }
 
-  const xExtent = d3.extent(TerrainData, d => d[0]);
-  const yExtent = d3.extent(TerrainData, d => d[1]);
+  const xExtent = d3.extent(terrain, d => d[0]);
+  const yExtent = d3.extent(terrain, d => d[1]);
 
   const xScale = d3.scaleLinear()
     .domain(xExtent as [number, number])
@@ -74,8 +77,8 @@ const AgentEnvironment:React.FC<Props> = ({isLoading}) => {
     .y(d => yScale(d[1]));
   
 
-  const terrainPath = lineGenerator(extendTerrain(TerrainData));
-  const minimapPath = lineGenerator(encloseTerrain(TerrainData));
+  const terrainPath = lineGenerator(extendTerrain(terrain));
+  const minimapPath = lineGenerator(encloseTerrain(terrain));
   let viewboxXOffset;
   if (frame) {
     const robotX = frame.hull.coordinate[0];
@@ -99,10 +102,9 @@ const AgentEnvironment:React.FC<Props> = ({isLoading}) => {
               <FontAwesomeIcon icon={faGear} />
             </button>
             <div
-              className={`${AgentEnvironmentStyles.agentInfoTag} ${isTagHovered ? AgentEnvironmentStyles.hoveredAgentTag : AgentEnvironmentStyles.unhoveredAgentTag}`}
+              className={`${AgentEnvironmentStyles.agentInfoTag}`}
               style={{ top: `${tagHeight.current}px`}}
-              onMouseEnter={() => setTagHover(true)}
-              onMouseLeave={() => setTagHover(false)}
+          
             >
               <p>speed: {String(frame.hull.horizontalVelocity).slice(0, 3)}</p>
               <div className={AgentEnvironmentStyles.tagTail}></div>

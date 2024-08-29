@@ -71,6 +71,11 @@
   border-radius: 10vh;
   font-size: .25rem;
   margin: 0 auto;
+
+  /* display: flex;
+  justify-content: center;
+  flex-direction: column; */
+
 }
 
 
@@ -89,13 +94,21 @@
 .perceptionLayer {
   width: 100%;
   position: relative;
-  padding: 27% 0 27% 0;
+  padding: 27px 0 27px 0;
+
+}
+
+
+.perceptiveModuleContainer {
+  position: relative;
+  overflow: visible;
+  width: var(--module-width);
 }
 
 .perceptiveModule {
   position: relative;
-  height: 1.25rem;
-  width: 1.82rem;
+  height: 20px;
+  width: 29.1px;
 }
 
 .perceptiveModuleShape {
@@ -182,6 +195,35 @@
 
 
 
+.infoToggle {
+  background-color: rgb(3, 163, 94);
+
+  width: 6px;
+  height: 6px;
+  font-size: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2px 0 0 auto;
+  border-radius: 100vh;
+  position: absolute;
+  z-index: 1000;
+}
+
+
+
+.icon {
+  position: absolute;
+  z-index: 999;
+  top: 50%;
+  transform: translate(50%, -50%);
+  right: 50%;
+  color: var(--d-500);
+  font-size: .5rem;
+}
+
+
+
 
 
 
@@ -202,7 +244,7 @@
 .svgOutline path {
   fill: transparent;
   stroke: var(--p-500);
-  stroke-width: 3px;
+  stroke-width: 2px;
   stroke-dasharray: 2500;
   stroke-linejoin: round;
   stroke-linecap: round;
@@ -217,6 +259,9 @@
   filter: blur(var(--glow-blur-size));
 }
 
+.inputConnector path {
+
+}
 
 .perceptiveModuleContainer .svgOutline path {
   animation-delay: 200ms;
@@ -260,147 +305,3 @@
   stroke-width: 6px;
   filter: blur(var(--glow-blur-size));
 }
-
-
-
-
-
-
-
-
-
-
-
-
-/* network */
-
-.networkContainer {
-  width: 100%;
-  height: 100%;
-  overflow: visible;
-}
-
-.network {
-  height: 100%;
-  width: 100%;
-}
-
-.networkLayers {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.networkLayer {
-  height: auto;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-}
-
-
-.networkModuleContainer {
-  position: relative;
-}
-
-.networkModule {
-  height: 15px;
-  width: 24px;
-  position: relative;
-  background-color: var(--p-500);
-  z-index: 999;
-  box-shadow: 0 0 1.5px var(--p-500);
-}
-
-
-
-
-.networkInfoToggle {
-  background-color: var(--p-540);
-  width: 5px;
-  height: 5px;
-  font-size: 3px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 1px 1px 0 auto;
-  border-radius: 100vh;
-  position: absolute;
-  z-index: 1000;
-}
-
-
-.networkInfoToggle svg {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
-
-}
-
-
-
-.networkIcon {
-  position: absolute;
-  z-index: 999;
-  top: 50%;
-  transform: translate(50%, -50%);
-  right: 50%;
-  color: var(--d-500);
-  font-size: .4rem;
-}
-
-
-
-
-
-
-
-/* toggle */
-
-
-
-
-.infoToggle {
-  background-color: var(--p-540);
-  width: 6px;
-  height: 6px;
-  font-size: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 2px 0 0 auto;
-  border-radius: 100vh;
-  position: absolute;
-  z-index: 1000;
-}
-
-.skillInfoToggle {
-  background-color: var(--p-540);
-  width: 6px;
-  height: 6px;
-  font-size: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 2px 2px 0 auto;
-  border-radius: 100vh;
-  position: absolute;
-  z-index: 1000;
-}
-
-.icon {
-  position: absolute;
-  z-index: 999;
-  top: 50%;
-  transform: translate(50%, -50%);
-  right: 50%;
-  color: var(--d-500);
-  font-size: .5rem;
-}
-
-

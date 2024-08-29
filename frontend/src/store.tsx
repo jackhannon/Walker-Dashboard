@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import normalizeFrame from './utils/normalizeFrame';
-import { Frame, RawFrame } from './types';
+import { Frame, RawFrame, Terrain } from '../types';
 import { socket } from './services/socket';
 
 type Agent = {
@@ -12,9 +12,11 @@ type State = {
   agents: Agent[];
   activeAgentIndex: number;
   frame: Frame;
+  terrain: Terrain;
   isConnected: boolean;
   changeActiveAgent: (index: number) => void;
   reset: () => void;
+
 };
 
 export const useAgentStore = create<State>((set) => {
@@ -22,6 +24,11 @@ export const useAgentStore = create<State>((set) => {
   function onFrameGet(frame: RawFrame) {
     const normalizedFrame = normalizeFrame(frame);
     set({ frame: normalizedFrame });
+  }
+
+  function onTerrainGet(terrain: Terrain) {
+    set({ terrain });
+    
   }
 
   function reset() {
@@ -34,6 +41,7 @@ export const useAgentStore = create<State>((set) => {
   }
 
   socket.on("frame", onFrameGet)
+  socket.on("terrain", onTerrainGet)
 
   return {
     agents: [
@@ -77,6 +85,7 @@ export const useAgentStore = create<State>((set) => {
         isContactingGround: false
       }
     },
+    terrain: [],
     isConnected: false,
     changeActiveAgent,
     reset,

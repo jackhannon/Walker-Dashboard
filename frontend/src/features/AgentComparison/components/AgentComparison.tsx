@@ -85,9 +85,11 @@ const AgentComparison: React.FC<Props> = ({ isLoading }) => {
         .style('fill', 'none')
         .attr('stroke', () => '#00dc82');
 
-    const length = path?.node()?.getTotalLength();
+    const length = path?.nodes()
+    .sort((nodeA, nodeB) => nodeB.getTotalLength() - nodeA.getTotalLength())[0]
+    .getTotalLength()
     
-    path.attr("stroke-dasharray", length + " " + length)
+    path.attr("stroke-dasharray", length)
     .attr("stroke-dashoffset", length || 0)
     .transition()
     .ease(d3.easeLinear)
@@ -126,7 +128,7 @@ const AgentComparison: React.FC<Props> = ({ isLoading }) => {
         .attr("y", (height / 2) - 25)
         .attr("transform", `rotate(-90, 0, ${height / 2})`)
         .text("Meters per second");
-        
+
     return () => {
         d3.select(element).selectAll('*').remove();
     };
