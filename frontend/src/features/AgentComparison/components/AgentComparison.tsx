@@ -126,9 +126,7 @@ const AgentComparison: React.FC<Props> = ({ isLoading }) => {
         .attr("y", (height / 2) - 25)
         .attr("transform", `rotate(-90, 0, ${height / 2})`)
         .text("Meters per second");
-
-    svg.append('g')
-        .call(d3.axisLeft(y));
+        
     return () => {
         d3.select(element).selectAll('*').remove();
     };
