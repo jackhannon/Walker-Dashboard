@@ -21,7 +21,7 @@ function socketConfig() {
 
 
     const intervalId = setInterval(() => {
-      io.emit("frame", getFrameFromIndex(index))
+      socket.emit("frame", getFrameFromIndex(index))
 
       index+=1;
       if (index > walkData.length-1) {
