@@ -34,8 +34,9 @@ const AgentSelector: React.FC<Props> = ({isLoading}) => {
         <Spinner/>
       ) : (
         <DotPagination handleChange={changeAgent}>
-          {agents.map((agent)=> (
+          {agents.map((agent, index)=> (
             <motion.div 
+              key={index}
               className={DotPaginationStyles.information}
               initial={{ opacity: 0}}
               animate={{

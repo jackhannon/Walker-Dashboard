@@ -15,32 +15,8 @@ function socketConfig() {
     }
   });
 
-  // const connectedUsers = new Map<string, Socket>();
 
   io.on("connection", (socket: Socket) => {
-    // console.log(`User ${username} connected with socket id: ${socket.id}`);
-
-    // console.log(`Connecting to environment`)
-    // const frameSocket = connectToSocket({
-    //   query: {
-    //     username: username,
-    //   },
-    // });
-
-    // frameSocket.on('connect', () => {
-    //   console.log("Connected to frame provider")
-    // });
-
-    // frameSocket.on('disconnect', () => {
-    //   console.log("Disconnected from frame provider")
-    // });
-      
-    // frameSocket.on('frame', onFrameGet);
-
-    // function onFrameGet(frame: Frame) {
-    //   io.emit("frame", frame)
-    // }
-
 
      let index = 0
 
@@ -71,5 +47,3 @@ function socketConfig() {
 }
 
 export default socketConfig
-
-

@@ -20,7 +20,6 @@ type State = {
 export const useAgentStore = create<State>((set) => {
 
   function onFrameGet(frame: RawFrame) {
-    console.log(frame)
     const normalizedFrame = normalizeFrame(frame);
     set({ frame: normalizedFrame });
   }
@@ -33,6 +32,8 @@ export const useAgentStore = create<State>((set) => {
     set({ activeAgentIndex: index });
     reset()
   }
+
+  socket.on("frame", onFrameGet)
 
   return {
     agents: [
@@ -82,4 +83,3 @@ export const useAgentStore = create<State>((set) => {
     onFrameGet,
   };
 });
-

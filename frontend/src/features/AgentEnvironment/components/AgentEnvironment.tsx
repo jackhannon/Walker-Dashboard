@@ -35,6 +35,7 @@ type Props = {
 const AgentEnvironment:React.FC<Props> = ({isLoading}) => {
   const frame = useAgentStore(state => state.frame);
 
+
   const [isSettingsOpen, setIsSettingsOpen] = useState(false)
   const [isTagHovered, setTagHover] = useState(false)
 
