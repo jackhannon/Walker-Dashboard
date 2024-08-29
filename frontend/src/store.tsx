@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import normalizeFrame from './utils/normalizeFrame';
-import { Frame, RawFrame } from '../../types';
+import { Frame, RawFrame } from './types';
 import { socket } from './services/socket';
 
 type Agent = {

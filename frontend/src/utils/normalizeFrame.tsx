@@ -1,4 +1,4 @@
-import { Frame, RawFrame} from "../../../types"
+import { Frame, RawFrame} from "../types"
 
 
 function radiansToDegrees(radians: number) {

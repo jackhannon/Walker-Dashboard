@@ -2,7 +2,7 @@ import React from 'react'
 import UpperLeg from './UpperLeg'
 import LowerLeg from './LowerLeg'
 import Hull from './Hull'
-import { Frame } from '../../../../../types'
+import { Frame } from '../../../types'
 
 type Props = {
   frame: Frame

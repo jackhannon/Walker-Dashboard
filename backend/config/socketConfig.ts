@@ -2,7 +2,7 @@ import { Socket } from "socket.io";
 import envConfig from "./envConfig.js";
 import { corsOptions } from "./corsOptions.js";
 import { connectToSocket } from "../services/robotServices";
-import { Frame } from '../../types.js'
+import { Frame } from '../types.js'
 import getFrameFromIndex from "../utils/getNextFrame.js";
 import { walkData } from "../data/walkData.js";
 function socketConfig() {

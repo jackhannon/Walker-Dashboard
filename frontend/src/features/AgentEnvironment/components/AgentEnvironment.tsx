@@ -6,7 +6,7 @@ import { useRef, useState } from "react"
 import AgentEnvironmentStyles from '../styles/AgentEnvironmentStyles.module.css'
 import AgentParametersTab from "@/features/AgentParameters/components/AgentParametersTab"
 import * as d3 from 'd3';
-import { Terrain } from "../../../../../types"
+import { Terrain } from "../../../types"
 import EnvironmentMinimap from "./EnvironmentMinimap"
 import DashBoardStyles from '../../../DashBoardStyles.module.css'
 import Spinner from "@/components/Spinner"
