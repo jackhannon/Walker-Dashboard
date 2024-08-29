@@ -1,10 +1,12 @@
 import { Socket } from "socket.io";
-import {walkData} from "../data/walkData";
-import getFrameFromIndex from "../utils/getNextFrame.js";
 import envConfig from "./envConfig.js";
 import { corsOptions } from "./corsOptions.js";
-
+import { connectToSocket } from "../services/robotServices";
+import { Frame } from '../../types'
+import getFrameFromIndex from "../utils/getNextFrame.js";
+import { walkData } from "../data/walkData.js";
 function socketConfig() {
+
   const SOCKET_PORT = Number(envConfig.SOCKET_PORT) || 4000;
   const { Server } = require("socket.io");
   const io = new Server({
@@ -12,31 +14,35 @@ function socketConfig() {
       origin: corsOptions.origin
     }
   });
-  
+
   // const connectedUsers = new Map<string, Socket>();
 
   io.on("connection", (socket: Socket) => {
-    // const username = socket.handshake.query.username as string;
-    // console.log(socket.handshake.query.username)
-    io.emit("frame", "Im working")
-
-    // if (!username) {
-    //   console.log("Connection attempt without username. Rejecting.");
-    //   socket.disconnect(true);
-    //   return;
-    // }
-
-    // if (connectedUsers.has(username)) {
-    //   const existingSocket = connectedUsers.get(username);
-    //   console.log(`User ${username} already connected. Rejecting new connection.`);
-    //   existingSocket?.disconnect(true);
-    // }
-
-    // connectedUsers.set(username, socket);
-
     // console.log(`User ${username} connected with socket id: ${socket.id}`);
 
-    let index = 0
+    // console.log(`Connecting to environment`)
+    // const frameSocket = connectToSocket({
+    //   query: {
+    //     username: username,
+    //   },
+    // });
+
+    // frameSocket.on('connect', () => {
+    //   console.log("Connected to frame provider")
+    // });
+
+    // frameSocket.on('disconnect', () => {
+    //   console.log("Disconnected from frame provider")
+    // });
+      
+    // frameSocket.on('frame', onFrameGet);
+
+    // function onFrameGet(frame: Frame) {
+    //   io.emit("frame", frame)
+    // }
+
+
+     let index = 0
 
     socket.on('disconnect', () => {
       clearInterval(intervalId);
@@ -60,6 +66,8 @@ function socketConfig() {
   });
 
   io.listen(SOCKET_PORT);
+
+
 }
 
 export default socketConfig

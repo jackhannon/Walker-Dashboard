@@ -1,5 +1,4 @@
 import express, { Express } from "express";
-// import robotRoutes from "./routes/robotRoutes"
 import { notFound } from "./middleware/notFound.js";
 import { errorHandler } from "./middleware/errorHander.js";
 import cors from 'cors'
