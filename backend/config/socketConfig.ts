@@ -6,7 +6,6 @@ import { Frame } from '../../types'
 import getFrameFromIndex from "../utils/getNextFrame.js";
 import { walkData } from "../data/walkData.js";
 function socketConfig() {
-
   const SOCKET_PORT = Number(envConfig.SOCKET_PORT) || 4000;
   const { Server } = require("socket.io");
   const io = new Server({
@@ -20,6 +19,16 @@ function socketConfig() {
 
      let index = 0
 
+
+    const intervalId = setInterval(() => {
+      io.emit("frame", getFrameFromIndex(index))
+
+      index+=1;
+      if (index > walkData.length-1) {
+        index = 0;
+      }
+    }, 20)
+    
     socket.on('disconnect', () => {
       clearInterval(intervalId);
       index = 0;
@@ -30,15 +39,6 @@ function socketConfig() {
       index = 0;
       console.log("resetting environment");
     })
-
-    const intervalId = setInterval(() => {
-      io.emit("frame", getFrameFromIndex(index))
-
-      index+=1;
-      if (index > walkData.length-1) {
-        index = 0;
-      }
-    }, 20)
   });
 
   io.listen(SOCKET_PORT);
