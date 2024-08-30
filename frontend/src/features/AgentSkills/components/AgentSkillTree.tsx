@@ -2,8 +2,9 @@ import SkillTreeStyles from '../styles/SkillTreeStyles.module.css'
 import PerceptionLayer from './PerceptionLayer'
 import SkillLayer from './SkillLayer'
 import DashBoardStyles from '../../../DashBoardStyles.module.css'
-import Spinner from '@/components/Spinner'
-import InfoTab from '@/components/InfoTab/InfoTab'
+import InfoTab from '../../../components/InfoTab/InfoTab'
+import Spinner from '../../../components/Spinner'
+
 
 type Props = {
   isLoading: boolean

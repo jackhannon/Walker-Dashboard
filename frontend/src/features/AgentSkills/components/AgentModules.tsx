@@ -1,5 +1,6 @@
-import InfoTab from "@/components/InfoTab/InfoTab"
-import Spinner from "@/components/Spinner"
+
+import InfoTab from '../../../components/InfoTab/InfoTab';
+import Spinner from '../../../components/Spinner';
 import DashBoardStyles from '../../../DashBoardStyles.module.css'
 import { ReactNode } from "react";
 

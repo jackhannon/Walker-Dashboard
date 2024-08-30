@@ -78,5 +78,5 @@ describe("DotPagination", () => {
   //   expect(handleChange).toHaveBeenCalledWith(2);
   //   expect(selectedOption).toBe("baz");
   //   expect(screen.getByText("baz")).toBeInTheDocument();
-  // });
+  });
 });

@@ -1,9 +1,9 @@
-import Spinner from '@/components/Spinner';
 import DashBoardStyles from '../../../DashBoardStyles.module.css';
-import InfoTab from '@/components/InfoTab/InfoTab';
 import { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 import ChartStyles from '../styles/ChartStyles.module.css';
+import InfoTab from '../../../components/InfoTab/InfoTab';
+import Spinner from '../../../components/Spinner';
 
 type Props = {
   isLoading: boolean;
