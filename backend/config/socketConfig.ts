@@ -1,10 +1,10 @@
 import { Socket } from "socket.io";
 import envConfig from "./envConfig.js";
 import { corsOptions } from "./corsOptions.js";
-import { connectToSocket } from "../services/robotServices";
-import { Frame } from '../types.js'
+
 import getFrameFromIndex from "../utils/getNextFrame.js";
 import { walkData } from "../data/walkData.js";
+import { terrainData } from "../data/terrainData.js";
 function socketConfig() {
   const SOCKET_PORT = Number(envConfig.SOCKET_PORT) || 4000;
   const { Server } = require("socket.io");
@@ -16,8 +16,10 @@ function socketConfig() {
 
 
   io.on("connection", (socket: Socket) => {
-     let index = 0
+    socket.emit("terrain", terrainData)
 
+     let index = 0
+    console.log("user connected")
     const intervalId = setInterval(() => {
       socket.emit("frame", getFrameFromIndex(index))
 
@@ -40,8 +42,6 @@ function socketConfig() {
   });
 
   io.listen(SOCKET_PORT);
-
-
 }
 
 export default socketConfig

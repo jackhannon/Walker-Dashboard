@@ -85,7 +85,7 @@ export const useAgentStore = create<State>((set) => {
         isContactingGround: false
       }
     },
-    terrain: [],
+    terrain: [[0, 0]],
     isConnected: false,
     changeActiveAgent,
     reset,
