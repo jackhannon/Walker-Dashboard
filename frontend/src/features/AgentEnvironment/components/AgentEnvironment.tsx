@@ -3,13 +3,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faGear } from "@fortawesome/free-solid-svg-icons"
 import { useRef, useState } from "react"
 import AgentEnvironmentStyles from '../styles/AgentEnvironmentStyles.module.css'
-import AgentParametersTab from "@/features/AgentParameters/components/AgentParametersTab"
 import * as d3 from 'd3';
 import { Terrain } from "../../../../types"
 import EnvironmentMinimap from "./EnvironmentMinimap"
 import DashBoardStyles from '../../../DashBoardStyles.module.css'
-import Spinner from "@/components/Spinner"
-import { useAgentStore } from "@/store"
+import { useAgentStore } from "../../../store"
+import AgentParametersTab from "../../AgentParameters/components/AgentParametersTab"
+import Spinner from "../../../components/Spinner"
+
 
 
 
@@ -101,6 +102,8 @@ const AgentEnvironment:React.FC<Props> = ({isLoading}) => {
             >
               <FontAwesomeIcon icon={faGear} />
             </button>
+
+
             <div
               className={`${AgentEnvironmentStyles.agentInfoTag}`}
               style={{ top: `${tagHeight.current}px`}}
@@ -109,6 +112,8 @@ const AgentEnvironment:React.FC<Props> = ({isLoading}) => {
               <p>speed: {String(frame.hull.horizontalVelocity).slice(0, 3)}</p>
               <div className={AgentEnvironmentStyles.tagTail}></div>
             </div>
+
+
             <svg
               className={AgentEnvironmentStyles.environment}
               viewBox={`${viewboxXOffset} 1 7 7`}

@@ -37,13 +37,13 @@ const DotPagination: React.FC<Props> = ({children, handleChange}) => {
   return (
     <div className={DotPaginationStyles.container}>
       <div className={DotPaginationStyles.agentAndSelectorContainer}>
-        <button onClick={handlePrevClick} className={`circularButtonOne`}> 
+        <button onClick={handlePrevClick} className={`circularButtonOne`} aria-label="paginate-left"> 
           <FontAwesomeIcon icon={faChevronLeft} />
         </button>
         <div className={DotPaginationStyles.childContainer}>
           {cloneElement(activeChild)}
         </div>
-        <button onClick={handleNextClick} className={`circularButtonOne`}> 
+        <button onClick={handleNextClick} className={`circularButtonOne`} aria-label="paginate-right"> 
           <FontAwesomeIcon icon={faChevronRight} />
         </button>
       </div>
