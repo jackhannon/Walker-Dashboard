@@ -1,7 +1,10 @@
 import { create } from 'zustand';
-import normalizeFrame from './utils/normalizeFrame';
-import { Frame, RawFrame, Terrain } from '../types';
+import { RawFrame, Terrain } from '../types';
 import { socket } from './services/socket';
+import { initialWalkerFrame } from './initialData/InitialWalkerFrame';
+import { initialWalkerTerrain } from './initialData/InitialWalkerTerrain';
+import { ProcessedFrame, ProcessedNullFrame } from './utils/FrameNormalizationClasses';
+import { WalkerNullTerrain, WalkerTerrain } from './utils/TerrainNormalizationClasses';
 
 type Agent = {
   type: string;
@@ -11,24 +14,20 @@ type Agent = {
 type State = {
   agents: Agent[];
   activeAgentIndex: number;
-  frame: Frame;
-  terrain: Terrain;
+  frame: ProcessedFrame | ProcessedNullFrame;
+  terrain: WalkerNullTerrain | WalkerTerrain;
   isConnected: boolean;
   changeActiveAgent: (index: number) => void;
   reset: () => void;
-
 };
 
 export const useAgentStore = create<State>((set) => {
-
   function onFrameGet(frame: RawFrame) {
-    const normalizedFrame = normalizeFrame(frame);
-    set({ frame: normalizedFrame });
+    set({ frame: new ProcessedFrame(frame) });
   }
 
   function onTerrainGet(terrain: Terrain) {
-    set({ terrain });
-    
+    set({ terrain: new WalkerTerrain(terrain) });
   }
 
   function reset() {
@@ -47,45 +46,16 @@ export const useAgentStore = create<State>((set) => {
     agents: [
       {
         type: 'Tree',
-        description: 'Selected is a relatively simple agent which performs one skill at a time using a selective and perceptive concepts',
+        description: 'An agent which performs one skill at a time using a selective and perceptive concepts',
       },
       {
         type: 'Network',
-        description: 'Selected is a network agent which performs uses skill together and uses their feedback',
+        description: 'An agent which uses skills relying on skills to drive a feedback loop',
       },
     ],
     activeAgentIndex: 0,
-    frame: {
-      hull: {
-        angle: 0,
-        horizontalVelocity: 0,
-        verticalVelocity: 0,
-        coordinate: [0, 0],
-      },
-      leftLeg: {
-        hip: {
-          angle: 0,
-          coordinate: [0, 0]
-        },
-        knee: {
-          angle: 0,
-          coordinate: [0, 0]
-        },
-        isContactingGround: false
-      },
-      rightLeg: {
-        hip: {
-          angle: 0,
-          coordinate: [0, 0]
-        },
-        knee: {
-          angle: 0,
-          coordinate: [0, 0]
-        },
-        isContactingGround: false
-      }
-    },
-    terrain: [[0, 0]],
+    frame: initialWalkerFrame,
+    terrain: initialWalkerTerrain,
     isConnected: false,
     changeActiveAgent,
     reset,

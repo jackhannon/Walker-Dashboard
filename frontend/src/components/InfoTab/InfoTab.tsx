@@ -46,6 +46,7 @@ const InfoTab: React.FC<Props> = ({togglePositionStyles, infoPositionStyles}) =>
               width:0, height:0, opacity: 0
             }}
           >
+            <div className={InfoTabStyles.pseudoInfoIcon}></div>
             <motion.p
               key={Date.now()}
               initial={{ opacity: 0 }}

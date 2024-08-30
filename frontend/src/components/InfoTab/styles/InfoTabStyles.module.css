@@ -30,6 +30,11 @@
   right: .5rem
 }
 
+.pseudoInfoIcon {
+  float: right;
+  width: 2rem;
+  height: 2rem;
+}
 
 .info {
   position: absolute;

@@ -9,6 +9,7 @@
 
 .childContainer {
   width: 100%;
+  height: 90%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -16,6 +17,7 @@
 
 .information {
   width: 90%;
+  height: 100%;
   color: white;
   display: flex;
   flex-direction: column;
@@ -27,7 +29,10 @@
 
 .information svg {
   width: 70%;
-  height: 50%;
+  max-width: 15rem;
+  height: 100%;
+  min-height: 100px;
+  display: flex;
   color: var(--p-500);
   fill: var(--p-500)
 }
@@ -54,8 +59,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  bottom: .5rem;
   position: absolute;
-  bottom: .5rem
 }
 
 .agentAndSelectorContainer {

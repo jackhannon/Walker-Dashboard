@@ -10,6 +10,8 @@ import DashBoardStyles from '../../../DashBoardStyles.module.css'
 import { useAgentStore } from "../../../store"
 import AgentParametersTab from "../../AgentParameters/components/AgentParametersTab"
 import Spinner from "../../../components/Spinner"
+import { ProcessedFrame, ProcessedNullFrame } from "../../../utils/FrameNormalizationClasses"
+import { WalkerNullTerrain, WalkerTerrain } from "../../../utils/TerrainNormalizationClasses"
 
 
 
@@ -57,40 +59,58 @@ const AgentEnvironment:React.FC<Props> = ({isLoading}) => {
     }
   }
   
-  const distanceTraveled = Math.round(frame?.["hull"]["coordinate"][0] - 5) || 0;
   const handleSettingsButtonClick = () => {
     setIsSettingsOpen(prev => !prev)
   }
 
-  const xExtent = d3.extent(terrain, d => d[0]);
-  const yExtent = d3.extent(terrain, d => d[1]);
 
-  const xScale = d3.scaleLinear()
-    .domain(xExtent as [number, number])
-    .range([0, 92.86666666666667]);
 
-  const yScale = d3.scaleLinear()
-    .domain(yExtent as [number, number])
-    .range([3.09733919194946, 3.5456075011624972]);
+  const distanceTraveled = 
+    frame instanceof ProcessedFrame
+    ? Math.round(frame.getProcessedFrame()["hull"]["coordinate"][0] - 5) || 0
+    : 0;
 
-  const lineGenerator = d3.line<[number, number]>()
-    .x(d => xScale(d[0]))
-    .y(d => yScale(d[1]));
+    
   
-
-  const terrainPath = lineGenerator(extendTerrain(terrain));
-  const minimapPath = lineGenerator(encloseTerrain(terrain));
+  let xExtent;
+  let yExtent;
+  let xScale: d3.ScaleLinear<number, number, never>;
+  let yScale: d3.ScaleLinear<number, number, never>;
+  let lineGenerator;
+  let terrainPath;
+  let minimapPath;
   let viewboxXOffset;
-  if (frame) {
-    const robotX = frame.hull.coordinate[0];
-    const viewBoxX = xScale(robotX - 3.5);
-    viewboxXOffset = viewBoxX;
+
+  if (terrain instanceof WalkerTerrain) {
+    xExtent= d3.extent(terrain.getTerrain(), d => d[0]);
+    yExtent = d3.extent(terrain.getTerrain(), d => d[1]);
+
+    xScale = d3.scaleLinear()
+      .domain(xExtent as [number, number])
+      .range([0, 92.86666666666667]);
+
+    yScale = d3.scaleLinear()
+      .domain(yExtent as [number, number])
+      .range([3.09733919194946, 3.5456075011624972]);
+
+    lineGenerator = d3.line<[number, number]>()
+      .x(d => xScale(d[0]))
+      .y(d => yScale(d[1]));
+    
+    terrainPath = lineGenerator(extendTerrain(terrain.getTerrain()));
+    minimapPath = lineGenerator(encloseTerrain(terrain.getTerrain()));
+    if (frame instanceof ProcessedFrame) {
+      const robotX = frame.getProcessedFrame().hull.coordinate[0];
+      const viewBoxX = xScale(robotX - 3.5);
+      viewboxXOffset = viewBoxX;
+    }
   }
+
 
   return (
     <div className={DashBoardStyles.agentEnvironmentContainer}>
       <div className={DashBoardStyles.label}>Agent Environment</div>
-        {(isLoading || !frame) ? (
+        {(isLoading || frame instanceof ProcessedNullFrame || terrain instanceof WalkerNullTerrain) ? (
           <Spinner/>
         ) : (     
           <>
@@ -109,7 +129,7 @@ const AgentEnvironment:React.FC<Props> = ({isLoading}) => {
               style={{ top: `${tagHeight.current}px`}}
           
             >
-              <p>speed: {String(frame.hull.horizontalVelocity).slice(0, 3)}</p>
+              <p>speed: {String(frame.getProcessedFrame().hull.horizontalVelocity).slice(0, 3)}</p>
               <div className={AgentEnvironmentStyles.tagTail}></div>
             </div>
 
@@ -120,7 +140,7 @@ const AgentEnvironment:React.FC<Props> = ({isLoading}) => {
               preserveAspectRatio="xMinYMid meet"
             >
               <g ref={getSVGInfo} id="Robot">
-                <Robot frame={frame}/>
+                <Robot frame={frame.getProcessedFrame()}/>
               </g>
 
               <g>
@@ -128,7 +148,7 @@ const AgentEnvironment:React.FC<Props> = ({isLoading}) => {
               </g>
             </svg>
             <div className={AgentEnvironmentStyles.extraInfoContainer}>
-              <EnvironmentMinimap terrainPath={minimapPath as string} hullCoordinate={frame.hull.coordinate} distanceTraveled={distanceTraveled}/>
+              <EnvironmentMinimap terrainPath={minimapPath as string} hullCoordinate={frame.getProcessedFrame().hull.coordinate} distanceTraveled={distanceTraveled}/>
             </div>
           </>
         )}

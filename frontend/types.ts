@@ -1,4 +1,4 @@
-type joint = {
+type Joint = {
   angle: number,
   coordinate: [number, number]
 }
@@ -11,17 +11,16 @@ export type Frame = {
     coordinate: [number, number],
   },
   leftLeg: {
-    hip: joint,
-    knee: joint,
+    hip: Joint,
+    knee: Joint,
     isContactingGround: boolean
   },
   rightLeg: {
-    hip: joint,
-    knee: joint,
+    hip: Joint,
+    knee: Joint,
     isContactingGround: boolean
   }
 }
-
 
 export type RawFrame = {
   "Hull angle": number,
@@ -41,5 +40,14 @@ export type RawFrame = {
   "Leg 4 position": [number, number]
 }
 
-
 export type Terrain = [number, number][]
+
+
+export type Nullify<T> = {
+  [P in keyof T]: T[P] extends object ? Nullify<T[P]> : T[P] | null;
+};
+
+export type NullFrame = Nullify<Frame>;
+export type NullRawFrame = Nullify<RawFrame>;
+export type NullJoint = Nullify<Joint>;
+export type NullTerrain = Nullify<Terrain>;
