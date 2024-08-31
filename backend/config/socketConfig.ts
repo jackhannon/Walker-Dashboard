@@ -2,9 +2,6 @@ import { Socket } from "socket.io";
 import envConfig from "./envConfig.js";
 import { corsOptions } from "./corsOptions.js";
 
-import getFrameFromIndex from "../utils/getNextFrame.js";
-import { walkData } from "../data/walkData.js";
-import { terrainData } from "../data/terrainData.js";
 function socketConfig() {
   const SOCKET_PORT = Number(envConfig.SOCKET_PORT) || 4000;
   const { Server } = require("socket.io");
@@ -14,34 +11,44 @@ function socketConfig() {
     }
   });
 
+  let frameProvider: Socket | null = null;
 
   io.on("connection", (socket: Socket) => {
-    socket.emit("terrain", terrainData)
+    const role = socket.handshake.query.role;
 
-     let index = 0
-    console.log("user connected")
-    const intervalId = setInterval(() => {
-      socket.emit("frame", getFrameFromIndex(index))
+    if (role === "frame-provider") {
+      frameProvider = socket;
+      console.log("Frame provider connected");
+    } else if (role === "client") {
+      console.log("Client connected");
+      if (frameProvider) {
+        frameProvider.emit("terrain");
+        frameProvider.emit("start-frame-retrieval");
 
-      index+=1;
-      if (index > walkData.length-1) {
-        index = 0;
+        frameProvider.on("frame", (frame) => {
+          socket.emit("frame", frame);
+        });
+
+        frameProvider.on("terrain", (frame) => {
+          socket.emit("terrain", frame);
+        });
+      } else {
+        console.log("No frame provider connected!");
       }
-    }, 20)
+    }
 
     socket.on('disconnect', () => {
-      clearInterval(intervalId);
-      index = 0;
-      console.log("a user disconnected");
-    })
-
-    socket.on('reset', () => {
-      index = 0;
-      console.log("resetting environment");
-    })
+      if (socket === frameProvider) {
+        console.log("Frame provider disconnected");
+        frameProvider = null;
+      } else {
+        frameProvider?.emit("end-frame-retrieval");
+        console.log("Client disconnected");
+      }
+    });
   });
 
   io.listen(SOCKET_PORT);
 }
 
-export default socketConfig
+export default socketConfig;
