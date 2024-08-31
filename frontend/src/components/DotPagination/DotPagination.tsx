@@ -29,6 +29,7 @@ const DotPagination: React.FC<Props> = ({children, handleChange}) => {
   };
 
   const handleDotClick = (index: number) => {
+    handleChange(index);
     setActiveIndex(index);
   };
 
@@ -50,6 +51,8 @@ const DotPagination: React.FC<Props> = ({children, handleChange}) => {
       <div className={DotPaginationStyles.dotsContainer}>
         {Array.from({ length: totalChildren }).map((_, index) => (
           <span
+            role='button'
+            aria-label={`pagination-dot-${index}`}
             key={index}
             className={`${DotPaginationStyles.dot} ${index === activeIndex ? DotPaginationStyles.activeDot : ''}`}
             onClick={() => handleDotClick(index)}

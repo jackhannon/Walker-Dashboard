@@ -30,7 +30,7 @@
 .information svg {
   width: 70%;
   max-width: 15rem;
-  height: 100%;
+  height: 15rem;
   min-height: 100px;
   display: flex;
   color: var(--p-500);

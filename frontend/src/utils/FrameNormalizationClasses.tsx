@@ -21,7 +21,7 @@ class BaseFrame {
           coordinate: frame["Leg 1 position"],
         },
         knee: {
-          angle: this.radiansToDegreesLowerLeg(frame["Knee 1 angle"], frame["Hip 1 angle"], Boolean(frame["Leg 1 ground contact"])),
+          angle: this.radiansToDegreesLowerLeg(frame["Knee 1 angle"]),
           coordinate: frame["Leg 2 position"],
         },
         isContactingGround: Boolean(frame["Leg 1 ground contact"]),
@@ -32,7 +32,7 @@ class BaseFrame {
           coordinate: frame["Leg 3 position"],
         },
         knee: {
-          angle: this.radiansToDegreesLowerLeg(frame["Knee 2 angle"], frame["Hip 2 angle"], Boolean(frame["Leg 2 ground contact"])),
+          angle: this.radiansToDegreesLowerLeg(frame["Knee 2 angle"]),
           coordinate: frame["Leg 4 position"],
         },
         isContactingGround: Boolean(frame["Leg 2 ground contact"]),
@@ -46,7 +46,7 @@ class BaseFrame {
   }
 
 
-   protected radiansToDegreesLowerLeg(radians: number | null, hip_angle: number | null, isContactingGround: boolean): number | null {
+   protected radiansToDegreesLowerLeg(radians: number | null): number | null {
     if (radians === null) return null;
     return radians * (180 / Math.PI);
     // ???
