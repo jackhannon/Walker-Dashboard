@@ -48,6 +48,7 @@ class BaseFrame {
 
    protected radiansToDegreesLowerLeg(radians: number | null, hip_angle: number | null, isContactingGround: boolean): number | null {
     if (radians === null) return null;
+    return radians * (180 / Math.PI);
     // ???
   }
 
