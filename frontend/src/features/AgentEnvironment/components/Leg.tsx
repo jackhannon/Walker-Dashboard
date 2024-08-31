@@ -26,8 +26,8 @@ const Leg:React.FC<Props> = ({upperLegCoordinate, upperLegAngle, lowerLegCoordin
     upperLegCoordinate[0] + (initialBottomCenter[0] - upperLegCoordinate[0]) * Math.cos(angleInRadians) - (initialBottomCenter[1] - upperLegCoordinate[1]) * Math.sin(angleInRadians),
     upperLegCoordinate[1] + (initialBottomCenter[0] - upperLegCoordinate[0]) * Math.sin(angleInRadians) + (initialBottomCenter[1] - upperLegCoordinate[1]) * Math.cos(angleInRadians)
   ];
-  
 
+  
 
   // Initial center of the lower leg before rotation
   const initialLowerLegCenter = [
