@@ -22,7 +22,6 @@ const Hull: React.FC<Props> = ({coordinate, angle}) => {
       className={AgentEnvironmentStyles.hull} 
     >
       <path d={hullPath} strokeWidth="0.02"/>
-      <circle cx={coordinate[0]} cy={coordinate[1]} r="0.05" fill="black" />
     </g>
   )
 }

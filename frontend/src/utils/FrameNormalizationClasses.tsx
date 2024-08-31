@@ -49,7 +49,6 @@ class BaseFrame {
    protected radiansToDegreesLowerLeg(radians: number | null): number | null {
     if (radians === null) return null;
     return radians * (180 / Math.PI);
-    // ???
   }
 
 
