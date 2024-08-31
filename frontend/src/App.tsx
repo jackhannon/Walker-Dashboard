@@ -4,9 +4,9 @@ import AgentEnvironment from './features/AgentEnvironment/components/AgentEnviro
 import AgentSelector from './features/AgentSelector/components/AgentSelector';
 import AgentModules from './features/AgentSkills/components/AgentModules';
 import SkillNetwork from './features/AgentSkills/components/Network/SkillNetwork';
-import SkillTree from './features/AgentSkills/components/Tree/SkillTree';
 import { useAgentStore } from './store';
 import DashBoardStyles from './DashBoardStyles.module.css'
+import SkillTree from './features/AgentSkills/components/Tree/SkillTree';
 function App() {
   const agentType = useAgentStore(state => state.agents[state.activeAgentIndex].type);
   return (

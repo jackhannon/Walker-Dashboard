@@ -11,7 +11,7 @@ const UpperLeg:React.FC<Props> = ({coordinate, angle}) => {
     M${coordinate[0] - 1/10},${coordinate[1] + 6/10}
     L${coordinate[0] + 1/10},${coordinate[1] + 6/10}
     L${coordinate[0] + 1/10},${coordinate[1] - 6/10}
-    L${coordinate[0] - 1/10},${(coordinate[1] - 6/10)}
+    L${coordinate[0] - 1/10},${coordinate[1] - 6/10}
     Z
   `
 
@@ -21,6 +21,8 @@ const UpperLeg:React.FC<Props> = ({coordinate, angle}) => {
       transform={`rotate(${angle}, ${coordinate[0]}, ${coordinate[1]})`} 
     >
       <path d={upperLegPath} strokeWidth="0.02"/>
+      <circle cx={coordinate[0]} cy={coordinate[1]} r="0.05" fill="black" />
+
     </g>  
   )
 }

@@ -11,7 +11,7 @@ import { useAgentStore } from "../../../store"
 import AgentParametersTab from "../../AgentParameters/components/AgentParametersTab"
 import Spinner from "../../../components/Spinner"
 import { ProcessedFrame, ProcessedNullFrame } from "../../../utils/FrameNormalizationClasses"
-import { WalkerNullTerrain, WalkerTerrain } from "../../../utils/TerrainNormalizationClasses"
+import { WalkerTerrain } from "../../../utils/TerrainNormalizationClasses"
 
 
 
@@ -42,6 +42,11 @@ const AgentEnvironment:React.FC<Props> = ({isLoading}) => {
     }
   });
 
+  const terrainRef = useRef<Terrain>()
+
+  if (!terrainRef.current && terrain instanceof WalkerTerrain) {
+    terrainRef.current = terrain.getTerrain();
+  }
 
   const [isSettingsOpen, setIsSettingsOpen] = useState(false)
 
@@ -81,9 +86,9 @@ const AgentEnvironment:React.FC<Props> = ({isLoading}) => {
   let minimapPath;
   let viewboxXOffset;
 
-  if (terrain instanceof WalkerTerrain) {
-    xExtent= d3.extent(terrain.getTerrain(), d => d[0]);
-    yExtent = d3.extent(terrain.getTerrain(), d => d[1]);
+  if (terrainRef.current) {
+    xExtent= d3.extent(terrainRef.current, d => d[0]);
+    yExtent = d3.extent(terrainRef.current, d => d[1]);
 
     xScale = d3.scaleLinear()
       .domain(xExtent as [number, number])
@@ -97,8 +102,8 @@ const AgentEnvironment:React.FC<Props> = ({isLoading}) => {
       .x(d => xScale(d[0]))
       .y(d => yScale(d[1]));
     
-    terrainPath = lineGenerator(extendTerrain(terrain.getTerrain()));
-    minimapPath = lineGenerator(encloseTerrain(terrain.getTerrain()));
+    terrainPath = lineGenerator(extendTerrain(terrainRef.current));
+    minimapPath = lineGenerator(encloseTerrain(terrainRef.current));
     if (frame instanceof ProcessedFrame) {
       const robotX = frame.getProcessedFrame().hull.coordinate[0];
       const viewBoxX = xScale(robotX - 3.5);
@@ -106,11 +111,10 @@ const AgentEnvironment:React.FC<Props> = ({isLoading}) => {
     }
   }
 
-
   return (
     <div className={DashBoardStyles.agentEnvironmentContainer}>
       <div className={DashBoardStyles.label}>Agent Environment</div>
-        {(isLoading || frame instanceof ProcessedNullFrame || terrain instanceof WalkerNullTerrain) ? (
+        {(isLoading || frame instanceof ProcessedNullFrame) ? (
           <Spinner/>
         ) : (     
           <>
