@@ -1,9 +1,7 @@
 import SkillTreeStyles from '../styles/SkillTreeStyles.module.css'
 import PerceptionLayer from './PerceptionLayer'
 import SkillLayer from './SkillLayer'
-import DashBoardStyles from '../../../DashBoardStyles.module.css'
-import InfoTab from '../../../components/InfoTab/InfoTab'
-import Spinner from '../../../components/Spinner'
+
 
 
 type Props = {
@@ -11,7 +9,7 @@ type Props = {
   perceptorId?: number
   skillId?: number
 }
-const AgentSkillTree:React.FC<Props> = ({perceptorId = 3, skillId = 2, isLoading}) => {
+const AgentSkillTree:React.FC<Props> = ({perceptorId = 3, skillId = 2}) => {
   const connectorSegmentUnit = 10;
   const rightPath = `M50 1, 59.5 1, A.15 .14 0 0 1 59.5 ${connectorSegmentUnit}, L50 ${connectorSegmentUnit}, 50 ${connectorSegmentUnit * 2.5},
     ${perceptorId === 0 ? (
@@ -58,46 +56,33 @@ const AgentSkillTree:React.FC<Props> = ({perceptorId = 3, skillId = 2, isLoading
   
     
   return (
-    <div className={`agentSkillsContainer`}>
-      <div className={DashBoardStyles.label}>Agent Modules</div>
-      <InfoTab />
-      {isLoading ? (
-        <Spinner/>
-      ) : (
-        <svg className={SkillTreeStyles.view}>
-          <svg className={SkillTreeStyles.treeContainer} viewBox='0 0 100 200' preserveAspectRatio='XMidYMid meet'>
-            <g className={SkillTreeStyles.inactiveConnectors}>
-              <path vector-effect="non-scaling-stroke" d={`M50 ${connectorSegmentUnit}, 50 ${connectorSegmentUnit * 2.5}, 14.4 ${connectorSegmentUnit * 2.5}, 14.4 ${connectorSegmentUnit * 5.75}, 14.4 ${(connectorSegmentUnit * 7)-.5}A.5 .5 0 0 0 15 ${connectorSegmentUnit * 7}, L50 ${connectorSegmentUnit * 7}, 50 ${connectorSegmentUnit * 13} 15 ${connectorSegmentUnit * 13}A.5 .5 0 0 0 14.4 ${(connectorSegmentUnit * 13) + .5}, L14.4 ${connectorSegmentUnit * 14.25} 14.4 ${connectorSegmentUnit * 17.5}, 50 ${connectorSegmentUnit * 17.5}, 50 ${connectorSegmentUnit * 19}`}></path>
-              <path vector-effect="non-scaling-stroke" d={`M50 ${connectorSegmentUnit * 2.5} 50 ${connectorSegmentUnit * 19}`}></path>
-              <path vector-effect="non-scaling-stroke" d={`M50 ${connectorSegmentUnit}, 50 ${connectorSegmentUnit * 2.5}, 14.4 ${connectorSegmentUnit * 2.5}, 14.4 ${connectorSegmentUnit * 5.75}, 14.4 ${(connectorSegmentUnit * 7)-.5}A.5 .5 0 0 0 15 ${connectorSegmentUnit * 7}, L50 ${connectorSegmentUnit * 7}, 50 ${connectorSegmentUnit * 13} 15 ${connectorSegmentUnit * 13}A.5 .5 0 0 0 14.4 ${(connectorSegmentUnit * 13) + .5}, L14.4 ${connectorSegmentUnit * 14.25} 14.4 ${connectorSegmentUnit * 17.5}, 50 ${connectorSegmentUnit * 17.5}, 50 ${connectorSegmentUnit * 19}`} transform="scale(-1, 1) translate(-100, 0)"></path>
-            </g>
-            <g className={SkillTreeStyles.svgOutline}>
-              <path d={leftPath} vector-effect="non-scaling-stroke"></path>
-              <path d={leftPath} vector-effect="non-scaling-stroke" className={SkillTreeStyles.glowBlur}></path>
-              <path d={rightPath} vector-effect="non-scaling-stroke"></path>
-              <path d={rightPath} vector-effect="non-scaling-stroke" className={SkillTreeStyles.glowBlur}></path>
-            </g>
-           
-            <foreignObject className={SkillTreeStyles.treeModules}>
-              <div className={SkillTreeStyles.outerModuleLabel}>sensor</div>
-              <div className={SkillTreeStyles.modules}>
-                <PerceptionLayer activePerceptorPosition={perceptorId} />
-                <SkillLayer activeSkillPosition={skillId}/>
-              </div>
-                
-              <div className={`${SkillTreeStyles.decisionLayer} ${SkillTreeStyles.outerTree}`}>
-                <div className={SkillTreeStyles.outerModuleLabel}>Decision</div>
-              </div>
-            </foreignObject>
-          </svg>
-        </svg>
-
-          
-
+    <svg className={SkillTreeStyles.view}>
+      <svg className={SkillTreeStyles.treeContainer} viewBox='0 0 100 200' preserveAspectRatio='XMidYMid meet'>
+        <g className={SkillTreeStyles.inactiveConnectors}>
+          <path vector-effect="non-scaling-stroke" d={`M50 ${connectorSegmentUnit}, 50 ${connectorSegmentUnit * 2.5}, 14.4 ${connectorSegmentUnit * 2.5}, 14.4 ${connectorSegmentUnit * 5.75}, 14.4 ${(connectorSegmentUnit * 7)-.5}A.5 .5 0 0 0 15 ${connectorSegmentUnit * 7}, L50 ${connectorSegmentUnit * 7}, 50 ${connectorSegmentUnit * 13} 15 ${connectorSegmentUnit * 13}A.5 .5 0 0 0 14.4 ${(connectorSegmentUnit * 13) + .5}, L14.4 ${connectorSegmentUnit * 14.25} 14.4 ${connectorSegmentUnit * 17.5}, 50 ${connectorSegmentUnit * 17.5}, 50 ${connectorSegmentUnit * 19}`}></path>
+          <path vector-effect="non-scaling-stroke" d={`M50 ${connectorSegmentUnit * 2.5} 50 ${connectorSegmentUnit * 19}`}></path>
+          <path vector-effect="non-scaling-stroke" d={`M50 ${connectorSegmentUnit}, 50 ${connectorSegmentUnit * 2.5}, 14.4 ${connectorSegmentUnit * 2.5}, 14.4 ${connectorSegmentUnit * 5.75}, 14.4 ${(connectorSegmentUnit * 7)-.5}A.5 .5 0 0 0 15 ${connectorSegmentUnit * 7}, L50 ${connectorSegmentUnit * 7}, 50 ${connectorSegmentUnit * 13} 15 ${connectorSegmentUnit * 13}A.5 .5 0 0 0 14.4 ${(connectorSegmentUnit * 13) + .5}, L14.4 ${connectorSegmentUnit * 14.25} 14.4 ${connectorSegmentUnit * 17.5}, 50 ${connectorSegmentUnit * 17.5}, 50 ${connectorSegmentUnit * 19}`} transform="scale(-1, 1) translate(-100, 0)"></path>
+        </g>
+        <g className={SkillTreeStyles.svgOutline}>
+          <path d={leftPath} vector-effect="non-scaling-stroke"></path>
+          <path d={leftPath} vector-effect="non-scaling-stroke" className={SkillTreeStyles.glowBlur}></path>
+          <path d={rightPath} vector-effect="non-scaling-stroke"></path>
+          <path d={rightPath} vector-effect="non-scaling-stroke" className={SkillTreeStyles.glowBlur}></path>
+        </g>
+        
+        <foreignObject className={SkillTreeStyles.treeModules}>
+          <div className={SkillTreeStyles.outerModuleLabel}>sensor</div>
+          <div className={SkillTreeStyles.modules}>
+            <PerceptionLayer activePerceptorPosition={perceptorId} />
+            <SkillLayer activeSkillPosition={skillId}/>
+          </div>
             
-       
-      )}
-    </div>
+          <div className={`${SkillTreeStyles.decisionLayer} ${SkillTreeStyles.outerTree}`}>
+            <div className={SkillTreeStyles.outerModuleLabel}>Decision</div>
+          </div>
+        </foreignObject>
+      </svg>
+    </svg>
   )
 }
 
