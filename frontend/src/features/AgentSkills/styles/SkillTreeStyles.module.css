@@ -21,10 +21,7 @@
   display: block;
 }
 
-.treeContainer {
-  overflow: visible;
-  width: 100%;
-}
+
 
 .modules {
   position: relative;
@@ -304,4 +301,56 @@
   --glow-blur-size: .8px;
   stroke-width: 6px;
   filter: blur(var(--glow-blur-size));
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 
+ */
+
+
+.treeContainer {
+  overflow: visible;
+  position: absolute;
+  inset: 0;
+}
+
+
+.expandTreeButton {
+  z-index: 1200;
+  background-color: transparent;
+  color: var(--p-500);
+  position: absolute;
+  border: none;
+  bottom: .5rem;
+  right: .5rem;
+  height: 2rem;
+  width: 2rem;
+  padding: .5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.expandTreeButton svg {
+  height: 1.5rem;
+  width: 1.5rem
+}
+
+
+.expandTreeButton:hover {
+  background-color: rgba(128, 128, 128, 0.465);
 }

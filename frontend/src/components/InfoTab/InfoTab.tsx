@@ -13,7 +13,7 @@ type Props = {
 const InfoTab: React.FC<Props> = ({togglePositionStyles, infoPositionStyles}) => {
   const [isHovered, setIsHovered] = useState<boolean>(false)
   return (
-    <div onMouseLeave={() => setIsHovered(false)} className={InfoTabStyles.container}>
+    <div onMouseLeave={() => setIsHovered(false)}>
       <div 
         className={`${isHovered ? InfoTabStyles.hovered : InfoTabStyles.notHovered} ${InfoTabStyles.infoToggle} ${togglePositionStyles || InfoTabStyles.defaultTogglePosition}`}
         onMouseOver={() => setIsHovered(true)}
@@ -46,7 +46,29 @@ const InfoTab: React.FC<Props> = ({togglePositionStyles, infoPositionStyles}) =>
               width:0, height:0, opacity: 0
             }}
           >
-            <div className={InfoTabStyles.pseudoInfoIcon}></div>
+            <motion.div 
+              className={InfoTabStyles.pseudoInfoIcon}
+              initial={{width:0, height:0}}
+              animate={{
+                width: "2rem", 
+                height: "2rem",
+                transition: {
+                  opacity: {
+                    duration: .3
+                  },
+                  width: {
+                    duration: .3
+                  },
+                  height: {
+                    duration: .3
+                  }
+                }
+              }}
+              exit={{
+                width:0, height:0
+              }}
+            >
+            </motion.div>
             <motion.p
               key={Date.now()}
               initial={{ opacity: 0 }}
