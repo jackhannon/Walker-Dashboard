@@ -5,6 +5,7 @@ import { corsOptions } from "./corsOptions.js";
 import getFrameFromIndex from "../utils/getNextFrame.js";
 import { walkData } from "../data/walkData.js";
 import { terrainData } from "../data/terrainData.js";
+import { flowChartData } from "../data/reactFlowData.js";
 function socketConfig() {
   const SOCKET_PORT = Number(envConfig.SOCKET_PORT) || 4000;
   const { Server } = require("socket.io");
@@ -16,6 +17,7 @@ function socketConfig() {
 
 
   io.on("connection", (socket: Socket) => {
+    socket.emit("flow-chart", flowChartData)
     socket.emit("terrain", terrainData)
 
      let index = 0
