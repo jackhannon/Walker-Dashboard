@@ -102,20 +102,7 @@
   width: var(--module-width);
 }
 
-.perceptiveModule {
-  position: relative;
-  height: 20px;
-  width: 29.1px;
-}
 
-.perceptiveModuleShape {
-  height: 100%;
-  width: 100%;
-  background-color: var(--p-500);
-  clip-path: polygon(14% 0%, 86% 0%, 100% 50%, 86% 100%, 14% 100%, 0% 50%);
-  position: relative;
-
-}
 
 
 
@@ -137,15 +124,6 @@
   position: relative;
 }
 
-.selectiveModule {
-  background-color: var(--p-500);
-  position: relative;
-  height: 100%;
-  z-index: 997;
-  width: 30px;
-  height: 30px;
-  overflow: visible;
-}
 
 
 
@@ -170,13 +148,7 @@
   padding: var(--connector-height) 0 0 0;
 }
 
-.skillModule {
-  height: 20px;
-  width: 29.1px;
-  position: relative;
-  background-color: var(--p-500);
-  z-index: 999;
-}
+
 
 .skillModuleInfoPosition {
   right: .2rem;
@@ -192,20 +164,7 @@
 
 
 
-.infoToggle {
-  background-color: rgb(3, 163, 94);
 
-  width: 6px;
-  height: 6px;
-  font-size: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 2px 0 0 auto;
-  border-radius: 100vh;
-  position: absolute;
-  z-index: 1000;
-}
 
 
 
@@ -256,9 +215,7 @@
   filter: blur(var(--glow-blur-size));
 }
 
-.inputConnector path {
 
-}
 
 .perceptiveModuleContainer .svgOutline path {
   animation-delay: 200ms;
@@ -327,9 +284,159 @@
   inset: 0;
 }
 
+.moduleEditor {
+  width: 95vw;
+  height: 95vh;
+  position: fixed;
+  right: 50%;
+  top: 50%;
+  transform: translateX(50%) translateY(-50%);
+  background-color: var(--d-500);
+  border: 1px solid var(--p-500);
+  z-index: 1000;
+  border-radius: 1rem;
+}
 
-.expandTreeButton {
+.moduleSelector {
+  top: 1rem; 
+  right: 1rem;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  gap: 2rem;
+  border: 1px solid var(--p-500);
+  border-radius: 1rem;
   z-index: 1200;
+  padding: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.skillModule {
+  height: 7rem;
+  width: 10rem;
+  position: relative;
+  background-color: var(--p-500);
+  z-index: 999;
+}
+
+.infoToggle {
+  background-color: rgb(3, 163, 94);
+  width: 1.4rem;
+  height: 1.4rem;
+  font-size: .9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 8px 8px 0 auto;
+  border-radius: 100vh;
+  position: absolute;
+  z-index: 1000;
+}
+
+.perceptiveInfoToggle {
+  background-color: var(--p-540);
+  width: 1.4rem;
+  height: 1.4rem;
+  font-size: .9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 8px 2px 0 auto;
+  border-radius: 100vh;
+  position: absolute;
+  z-index: 1000;
+}
+
+
+.selectiveInfoToggle {
+  background-color: var(--p-540);
+  width: 1.4rem;
+  height: 1.4rem;
+  font-size: .9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 4px 4px 0 auto;
+  border-radius: 100vh;
+  position: absolute;
+  z-index: 1000;
+}
+
+
+.perceptiveModule {
+  position: relative;
+  height: 7rem;
+  width: 10rem;
+}
+
+.perceptiveModuleShape {
+  height: 100%;
+  width: 100%;
+  background-color: var(--p-500);
+  clip-path: polygon(14% 0%, 86% 0%, 100% 50%, 86% 100%, 14% 100%, 0% 50%);
+  position: relative;
+}
+
+
+
+.selectiveModule {
+  background-color: var(--p-500);
+  position: relative;
+  height: 100%;
+  z-index: 997;
+  width: 7rem;
+  height: 7rem;
+  overflow: visible;
+}
+
+.draggingModule {
+ width: 10rem
+}
+
+.draggableModule {
+  width: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flowModuleContainer {
+ /* width: 10rem;
+ display: flex; */
+}
+
+.dropZoneNode {
+  width: 10rem;
+  height: 7rem;
+  color: var(--p-500);
+  font-size: .7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  border: 1px dashed var(--p-500);
+}
+
+.isElementOverDropZone {
+  border: 1px solid var(--p-540);
+  width: 10rem;
+  height: 7rem;
+}
+
+.icon {
+  position: absolute;
+  z-index: 999;
+  top: 50%;
+  transform: translate(50%, -50%);
+  right: 50%;
+  color: var(--d-500);
+  font-size: 2.5rem;
+}
+
+
+.expandEditorButton {
+  z-index: 999;
   background-color: transparent;
   color: var(--p-500);
   position: absolute;
@@ -342,15 +449,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 
-.expandTreeButton svg {
+.expandEditorButton svg {
   height: 1.5rem;
   width: 1.5rem
 }
 
-
-.expandTreeButton:hover {
+.expandEditorButton:hover {
   background-color: rgba(128, 128, 128, 0.465);
 }

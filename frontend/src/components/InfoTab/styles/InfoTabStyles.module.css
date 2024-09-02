@@ -4,7 +4,7 @@
   width: 1.5rem;
   height: 1.5rem;
   border-radius: 1rem;
-  z-index: 1111;
+  z-index: 999;
   border: 1px solid var(--d-500);
 }
 
@@ -42,7 +42,7 @@
   border: 1px solid black;
   color: white;
   border-radius: .8rem;
-  z-index: 1100;
+  z-index: 998;
   overflow: hidden;
 }
 

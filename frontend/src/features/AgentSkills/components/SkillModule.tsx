@@ -1,22 +1,19 @@
-import SkillStyles from '../styles/SkillStyles.module.css'
+import ModulesStyles from '../styles/ModulesStyles.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHand } from '@fortawesome/free-solid-svg-icons'
 import { ReactNode } from 'react'
-import ModuleInfoTab from './Tree/ModuleInfoTab'
 
-type Props = {
- info: string
- children?: ReactNode
+type RegularProps = {
+  children: ReactNode
 }
-const SkillModule: React.FC<Props> = ({info, children}) => {
+
+
+const SkillModule: React.FC<RegularProps> = ({children}) => {
 
   return (
-    <div className={SkillStyles.skillModuleContainer}>
-      <div className={`${SkillStyles.skillModule} ${SkillStyles.module}`}>
-        <ModuleInfoTab info={info} toggleStyles={SkillStyles.skillInfoToggle}/>
-        <FontAwesomeIcon icon={faHand} className={SkillStyles.icon}/>
-        {children}
-      </div>
+    <div className={`${ModulesStyles.skillModule} ${ModulesStyles.module}`}>
+      <FontAwesomeIcon icon={faHand} className={ModulesStyles.icon}/>
+      {children}
     </div>
   )
 }

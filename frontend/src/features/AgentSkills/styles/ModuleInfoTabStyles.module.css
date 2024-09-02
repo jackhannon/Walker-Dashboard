@@ -1,12 +1,12 @@
 .info {
-  width: 25px;
+  width: 7rem;
   color: rgb(255, 255, 255);
   background-color: var(--p-540);
   z-index: 1000;
-  font-size: 3.5px;
+  font-size: .9rem;
   padding: 2px;
   position: absolute;
-  border-radius: 2px;
+  border-radius: 3px;
   height: auto;
   
 }
@@ -18,30 +18,26 @@
 }
 
 
-.infoToggle { 
-  background-color: var(--p-540);
+.infoToggle {
+  background-color: rgb(3, 163, 94);
   width: 1.4rem;
   height: 1.4rem;
   font-size: .9rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 8px 8px 0 auto;
   border-radius: 100vh;
   position: absolute;
   z-index: 1000;
 }
 
-.infoToggle svg {
-  color: rgb(21, 255, 0);
-  display: block;
-  margin: auto
-}
+
 
 .infoTab {
   width: 1rem;
   height: 1rem;
   position: absolute;
-
 }
 
 .defaultTogglePosition {
@@ -53,9 +49,6 @@
   bottom: 95%;
   right: 0;
 }
-
-
-
 
 .selectiveInfoPosition {
   bottom: 98%;

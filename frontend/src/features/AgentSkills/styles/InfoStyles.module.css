@@ -1,14 +1,13 @@
 .info {
-  width: 25px;
+  width: 3rem;
   color: rgb(255, 255, 255);
   background-color: rgb(29, 171, 98);
   z-index: 1000;
-  font-size: 3.5px;
+  font-size: .8rem;
   padding: 2px;
   position: absolute;
   border-radius: 2px;
   height: auto;
-  
 }
 
 .container {

@@ -1,17 +1,19 @@
-import SkillStyles from '../styles/SkillStyles.module.css'
+import ModulesStyles from '../styles/ModulesStyles.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBalanceScale } from '@fortawesome/free-solid-svg-icons'
-import ModuleInfoTab from './Tree/ModuleInfoTab'
+import { ReactNode } from 'react'
 
-type Props = {
-  info: string
+type RegularProps = {
+  children: ReactNode
 }
-const SelectiveModule: React.FC<Props> = ({info}) => {
+
+
+const SelectiveModule: React.FC<RegularProps> = ({children}) => {
   return (
-    <div className={SkillStyles.selectiveModuleContainer}>
-      <ModuleInfoTab toggleStyles={SkillStyles.infoToggle} info={info} />
-      <div className={`${SkillStyles.selectiveModule} ${SkillStyles.module}`}>
-        <FontAwesomeIcon icon={faBalanceScale} className={SkillStyles.icon}/>
+    <div className={ModulesStyles.selectiveModuleContainer}>
+      {children}
+      <div className={`${ModulesStyles.selectiveModule} ${ModulesStyles.module}`}>
+        <FontAwesomeIcon icon={faBalanceScale} className={ModulesStyles.icon}/>
       </div>
     </div>
   

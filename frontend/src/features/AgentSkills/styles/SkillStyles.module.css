@@ -147,22 +147,25 @@
 
 
 
-.skillLayer {
+/* .skillLayer {
   padding: 27px 0 27px 0;
   position: relative;
-}
+} */
 
 
-.skillModuleContainer {
+
+
+
+/* .skillModuleContainer {
   padding-top: 1.25rem;
   position: relative;
   width: var(--module-width);
   padding: var(--connector-height) 0 0 0;
-}
+} */
 
 .skillModule {
-  height: 20px;
-  width: 29.1px;
+  height: 5rem;
+  width: 10rem;
   position: relative;
   background-color: var(--p-500);
   z-index: 999;
@@ -379,28 +382,5 @@
   z-index: 1000;
 }
 
-.skillInfoToggle {
-  background-color: var(--p-540);
-  width: 6px;
-  height: 6px;
-  font-size: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 2px 2px 0 auto;
-  border-radius: 100vh;
-  position: absolute;
-  z-index: 1000;
-}
-
-.icon {
-  position: absolute;
-  z-index: 999;
-  top: 50%;
-  transform: translate(50%, -50%);
-  right: 50%;
-  color: var(--d-500);
-  font-size: .5rem;
-}
 
 

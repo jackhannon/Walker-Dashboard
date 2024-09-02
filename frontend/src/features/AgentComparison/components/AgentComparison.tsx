@@ -146,7 +146,7 @@ const AgentComparison: React.FC<Props> = ({ isLoading }) => {
         <svg
           ref={svgRef}
           viewBox={`0 0 ${width} ${height}`}
-          preserveAspectRatio="xMidYMid meet" 
+          preserveAspectRatio="none" 
           className={ChartStyles.chartContainer}
         ></svg>
       )}

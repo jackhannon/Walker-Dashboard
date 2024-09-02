@@ -2,11 +2,14 @@ import InfoTab from '../../../components/InfoTab/InfoTab';
 import Spinner from '../../../components/Spinner';
 import DashBoardStyles from '../../../DashBoardStyles.module.css'
 import { useState } from "react";
-import SkillTreeStyles from '../styles/SkillTreeStyles.module.css'
+import ModulesStyles from '../styles/ModulesStyles.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUpRightAndDownLeftFromCenter } from '@fortawesome/free-solid-svg-icons';
 import { ReactFlow } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
+import ModuleEditor from './Tree/ModuleEditor';
+import { HTML5Backend } from 'react-dnd-html5-backend';
+import { DndProvider } from 'react-dnd';
 
 type Props = {
   isLoading: boolean;
@@ -14,7 +17,7 @@ type Props = {
 
 const AgentModules: React.FC<Props> = ({isLoading}) => {
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
-  const onToggleExpand = () => {
+  const onEditToggle = () => {
     setIsExpanded(prevState => !prevState);
   };
 
@@ -26,18 +29,23 @@ const AgentModules: React.FC<Props> = ({isLoading}) => {
         {isLoading ? (
           <Spinner/>
         ) : (
-          <div className={SkillTreeStyles.treeContainer}>
+          <div className={ModulesStyles.treeContainer}>
             <ReactFlow />
             <button 
-              aria-label='expand' 
-              onClick={onToggleExpand}
-              className={SkillTreeStyles.expandTreeButton}
+              aria-label='show module editor' 
+              onClick={onEditToggle}
+              className={ModulesStyles.expandEditorButton}
             >
               <FontAwesomeIcon icon={faUpRightAndDownLeftFromCenter} />
             </button>
           </div>
         )}
       </div>
+      {isExpanded && (
+        <DndProvider backend={HTML5Backend}>
+          <ModuleEditor toggleContract={onEditToggle}/>
+        </DndProvider>
+      )}
       
     </div>
   )
