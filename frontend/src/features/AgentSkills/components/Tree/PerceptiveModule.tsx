@@ -1,7 +1,7 @@
 import { faEye } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import SkillStyles from '../styles/SkillStyles.module.css'
-import ModuleInfoTab from './Tree/ModuleInfoTab';
+import SkillStyles from '../../styles/SkillStyles.module.css'
+import ModuleInfoTab from '../ModuleInfoTab';
 
 
 type Props = {

@@ -1,4 +1,4 @@
-import PerceptiveModule from '../PerceptiveModule'
+import PerceptiveModule from './PerceptiveModule'
 import SkillStyles from '../../styles/SkillStyles.module.css'
 
 type Props = {

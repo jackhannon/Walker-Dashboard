@@ -2,7 +2,7 @@ import SkillStyles from '../styles/SkillStyles.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHand } from '@fortawesome/free-solid-svg-icons'
 import { ReactNode } from 'react'
-import ModuleInfoTab from './Tree/ModuleInfoTab'
+import ModuleInfoTab from './ModuleInfoTab'
 
 type Props = {
  info: string

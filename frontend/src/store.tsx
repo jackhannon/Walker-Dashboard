@@ -5,7 +5,6 @@ import { initialWalkerFrame } from './initialData/InitialWalkerFrame';
 import { initialWalkerTerrain } from './initialData/InitialWalkerTerrain';
 import { ProcessedFrame, ProcessedNullFrame } from './utils/FrameNormalizationClasses';
 import { WalkerNullTerrain, WalkerTerrain } from './utils/TerrainNormalizationClasses';
-import { ReactFlowJsonObject } from '@xyflow/react';
 
 type Agent = {
   type: string;
@@ -20,7 +19,6 @@ type State = {
   isConnected: boolean;
   changeActiveAgent: (index: number) => void;
   reset: () => void;
-  flowChart: ReactFlowJsonObject | object;
 };
 
 export const useAgentStore = create<State>((set) => {
@@ -31,11 +29,6 @@ export const useAgentStore = create<State>((set) => {
   function onTerrainGet(terrain: Terrain) {
     set({ terrain: new WalkerTerrain(terrain) });
   }
-
-  function onFlowChartGet(flowChart: ReactFlowJsonObject) {
-    set({ flowChart: flowChart });
-  }
-
   function reset() {
     socket.emit('reset');
   }
@@ -47,7 +40,6 @@ export const useAgentStore = create<State>((set) => {
 
   socket.on("frame", onFrameGet)
   socket.on("terrain", onTerrainGet)
-  socket.on("flow-chart", onFlowChartGet)
 
   return {
     agents: [
@@ -67,6 +59,5 @@ export const useAgentStore = create<State>((set) => {
     changeActiveAgent,
     reset,
     onFrameGet,
-    flowChart: {}
   };
 });

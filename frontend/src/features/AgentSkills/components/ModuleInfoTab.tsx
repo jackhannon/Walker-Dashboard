@@ -1,23 +1,24 @@
 import { useState } from 'react'
-import InfoStyles from '../styles/InfoStyles.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faInfo } from '@fortawesome/free-solid-svg-icons'
 import {motion, AnimatePresence} from "framer-motion"
+import InfoStyles from '../styles/ModuleInfoStyles.module.css'
+
 type Props = {
   toggleStyles?: string
   infoStyles?: string
   info: string
 }
-const InfoHoverTab:React.FC<Props> = ({toggleStyles, infoStyles, info}) => {
+const ModuleInfoTab:React.FC<Props> = ({toggleStyles, infoStyles, info}) => {
   const [isHovered, setIsHovered] = useState<boolean>(false)
   return (
-    <div onMouseLeave={() => setIsHovered(false)} className={`${InfoStyles.container} ${toggleStyles || InfoStyles.infoToggle}`}
-        onMouseOver={() => setIsHovered(true)}
-        aria-label='hover-for-info'
-      >
+    <div 
+      onMouseLeave={() => setIsHovered(false)} className={`${InfoStyles.container} ${toggleStyles || InfoStyles.infoToggle}`}
+      onMouseOver={() => setIsHovered(true)}
+      aria-label='hover-for-info'
+    >
       <FontAwesomeIcon icon={faInfo}/>
 
-      {/* </div> */}
       <AnimatePresence>
       {isHovered && (
         <motion.div
@@ -45,4 +46,4 @@ const InfoHoverTab:React.FC<Props> = ({toggleStyles, infoStyles, info}) => {
   )
 }
 
-export default InfoHoverTab
+export default ModuleInfoTab

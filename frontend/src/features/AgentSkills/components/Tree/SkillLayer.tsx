@@ -1,6 +1,6 @@
 import SkillStyles from '../../styles/SkillStyles.module.css'
-import SelectiveModule from '../SelectiveModule'
 import SkillModule from '../SkillModule'
+import SelectiveModule from './SelectiveModule'
 
 type Props = {
   activeSkillPosition?: number

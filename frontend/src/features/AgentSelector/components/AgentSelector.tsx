@@ -10,6 +10,7 @@ import DotPagination from '../../../components/DotPagination/DotPagination'
 import { useAgentStore } from '../../../store'
 import InfoTab from '../../../components/InfoTab/InfoTab'
 import Spinner from '../../../components/Spinner'
+import Pagination from '../../../components/DotPagination/Pagination'
 
 
 type Props = {
@@ -35,7 +36,7 @@ const AgentSelector: React.FC<Props> = ({isLoading}) => {
       {isLoading ? (
         <Spinner/>
       ) : (
-        <DotPagination handleChange={changeAgent}>
+        <Pagination handleChange={changeAgent}>
           {agents.map((agent, index)=> (
             <motion.div 
               key={index}
@@ -60,7 +61,7 @@ const AgentSelector: React.FC<Props> = ({isLoading}) => {
               </p>
             </motion.div>
           ))}
-        </DotPagination>
+        </Pagination>
       )}
       
     </div>

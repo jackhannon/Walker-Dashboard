@@ -1,7 +1,7 @@
-import SkillStyles from '../styles/SkillStyles.module.css'
+import SkillStyles from '../../styles/SkillStyles.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBalanceScale } from '@fortawesome/free-solid-svg-icons'
-import ModuleInfoTab from './Tree/ModuleInfoTab'
+import ModuleInfoTab from '../ModuleInfoTab'
 
 type Props = {
   info: string
