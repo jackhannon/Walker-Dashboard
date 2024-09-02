@@ -2,14 +2,13 @@
 import InfoTab from '../../../components/InfoTab/InfoTab';
 import Spinner from '../../../components/Spinner';
 import DashBoardStyles from '../../../DashBoardStyles.module.css'
-import { ReactNode } from "react";
+import AgentSkillTree from './AgentSkillTree';
 
 type Props = {
   isLoading: boolean;
-  children: ReactNode;
 }
 
-const AgentModules: React.FC<Props> = ({isLoading, children}) => {
+const AgentModules: React.FC<Props> = ({isLoading}) => {
   return (
     <div className={DashBoardStyles.agentSkillsContainer}>
       <div className={DashBoardStyles.label}>Agent Modules</div>
@@ -17,7 +16,7 @@ const AgentModules: React.FC<Props> = ({isLoading, children}) => {
       {isLoading ? (
         <Spinner/>
       ) : (
-        children
+        <AgentSkillTree/>
       )}
     </div>
   )
