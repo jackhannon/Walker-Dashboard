@@ -60,21 +60,21 @@ const SkillNetwork = () => {
             <div className={SkillStyles.networkLayers}>
               <NetworkLayer>
                 <>
-                  <NetworkModule info={""}/>
-                  <NetworkModule info={""}/>
+                  <NetworkModule info={"A network skill module"}/>
+                  <NetworkModule info={"A network skill module"}/>
                 </>
               </NetworkLayer>
               <NetworkLayer>
                 <>
-                  <NetworkModule info={""}/>
-                  <NetworkModule info={""}/>
-                  <NetworkModule info={""}/>
+                  <NetworkModule info={"A network skill module"}/>
+                  <NetworkModule info={"A network skill module"}/>
+                  <NetworkModule info={"A network skill module"}/>
                 </>
               </NetworkLayer>
               <NetworkLayer>
                 <>
-                  <NetworkModule info={""}/>
-                  <NetworkModule info={""}/>
+                  <NetworkModule info={"A network skill module"}/>
+                  <NetworkModule info={"A network skill module"}/>
                 </>
               </NetworkLayer>
             </div>

@@ -12,6 +12,7 @@ import AgentParametersTab from "../../AgentParameters/components/AgentParameters
 import Spinner from "../../../components/Spinner"
 import { ProcessedFrame, ProcessedNullFrame } from "../../../utils/FrameNormalizationClasses"
 import { WalkerTerrain } from "../../../utils/TerrainNormalizationClasses"
+import Disconnected from "../../../components/Disconnected"
 
 
 
@@ -30,15 +31,14 @@ function encloseTerrain(terrain: Terrain) {
   return newTerrain
 }
 
-type Props = {
-  isLoading: boolean
-}
 
-const AgentEnvironment:React.FC<Props> = ({isLoading}) => {
-  const {frame, terrain } = useAgentStore(state => {
+const AgentEnvironment:React.FC = () => {
+  const {frame, terrain, error } = useAgentStore(state => {
     return {
       frame: state.frame, 
-      terrain: state.terrain
+      terrain: state.terrain,
+      isConnected: state.isConnected,
+      error: state.error
     }
   });
 
@@ -110,12 +110,13 @@ const AgentEnvironment:React.FC<Props> = ({isLoading}) => {
       viewboxXOffset = viewBoxX;
     }
   }
-
   return (
     <div className={DashBoardStyles.agentEnvironmentContainer}>
       <div className={DashBoardStyles.label}>Agent Environment</div>
-        {(isLoading || frame instanceof ProcessedNullFrame) ? (
-          <Spinner/>
+        {error ? (
+          <Disconnected message={error} />
+        ) : (frame instanceof ProcessedNullFrame) ? (
+          <Spinner />
         ) : (     
           <>
             {isSettingsOpen && <AgentParametersTab />}
@@ -130,8 +131,7 @@ const AgentEnvironment:React.FC<Props> = ({isLoading}) => {
 
             <div
               className={`${AgentEnvironmentStyles.agentInfoTag}`}
-              style={{ top: `${tagHeight.current}px`}}
-          
+              style={{ top: `${tagHeight.current}px`}} 
             >
               <p>speed: {String(frame.getProcessedFrame().hull.horizontalVelocity).slice(0, 3)}</p>
               <div className={AgentEnvironmentStyles.tagTail}></div>

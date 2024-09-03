@@ -6,7 +6,6 @@ import DotPaginationStyles from '../../../components/DotPagination/styles/DotPag
 import {motion} from "framer-motion"
 import { useShallow } from 'zustand/react/shallow'
 import NetworkSVG from './NetworkSVG'
-import DotPagination from '../../../components/DotPagination/DotPagination'
 import { useAgentStore } from '../../../store'
 import InfoTab from '../../../components/InfoTab/InfoTab'
 import Spinner from '../../../components/Spinner'

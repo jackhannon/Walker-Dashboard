@@ -19,15 +19,28 @@ type State = {
   isConnected: boolean;
   changeActiveAgent: (index: number) => void;
   reset: () => void;
+  error: string | null
 };
 
 export const useAgentStore = create<State>((set) => {
+  let timeoutId: NodeJS.Timeout;
+
+  function resetTimeout() {
+    if (timeoutId) clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => {
+      set({ error: 'Disconnected from socket' });
+      set({ isConnected: false });
+    }, 10000);
+  }
+
   function onFrameGet(frame: RawFrame) {
     set({ frame: new ProcessedFrame(frame) });
+    resetTimeout()
   }
 
   function onTerrainGet(terrain: Terrain) {
     set({ terrain: new WalkerTerrain(terrain) });
+    resetTimeout()
   }
   function reset() {
     socket.emit('reset');
@@ -37,7 +50,7 @@ export const useAgentStore = create<State>((set) => {
     set({ activeAgentIndex: index });
     reset()
   }
-
+  
   socket.on("frame", onFrameGet)
   socket.on("terrain", onTerrainGet)
 
@@ -45,7 +58,7 @@ export const useAgentStore = create<State>((set) => {
     agents: [
       {
         type: 'Tree',
-        description: 'An agent which performs one skill at a time using a selective and perceptive concepts',
+        description: 'An agent which performs one skill at a time using selective and perceptive concepts',
       },
       {
         type: 'Network',
@@ -59,5 +72,6 @@ export const useAgentStore = create<State>((set) => {
     changeActiveAgent,
     reset,
     onFrameGet,
+    error: null
   };
 });

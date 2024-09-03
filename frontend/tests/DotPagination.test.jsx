@@ -1,10 +1,9 @@
 import { describe, expect, it, vi } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
-import DotPagination from '../src/components/DotPagination/DotPagination';
+import Pagination from '../src/components/DotPagination/Pagination';
 import React from 'react';
 
-
-describe("DotPagination", () => {
+describe("Pagination", () => {
   it("paginates forward and backward", () => {
     const options = ["foo", "bar", "baz"];
     let selectedOption = options[0];
@@ -13,11 +12,11 @@ describe("DotPagination", () => {
     });
 
     render(
-      <DotPagination handleChange={handleChange}>
+      <Pagination handleChange={handleChange}>
         {options.map((option, index) => (
           <div key={index}>{option}</div>
         ))}
-      </DotPagination>
+      </Pagination>
     );
 
     expect(screen.getByText("foo")).toBeInTheDocument();
@@ -53,11 +52,11 @@ describe("DotPagination", () => {
     });
 
     render(
-      <DotPagination handleChange={handleChange}>
+      <Pagination handleChange={handleChange}>
         {options.map((option, index) => (
           <div key={index}>{option}</div>
         ))}
-      </DotPagination>
+      </Pagination>
     );
 
     expect(screen.getByText("foo")).toBeInTheDocument();

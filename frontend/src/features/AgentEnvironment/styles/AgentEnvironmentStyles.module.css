@@ -9,7 +9,7 @@
 }
 
 .agentInfoTag {
-  position: absolute;
+  position: fixed;
   background-color: var(--p-500);
   font-size: .8rem;
   width: 5rem;
@@ -26,6 +26,7 @@
  }
  
  .unhoveredAgentTag {
+  
  }
  
  
