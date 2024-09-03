@@ -7,7 +7,7 @@ import DashBoardStyles from './DashBoardStyles.module.css'
 function App() {
   return (
     <div className={DashBoardStyles.dashboard}>
-      <AgentEnvironment isLoading={false} />
+      <AgentEnvironment />
       <AgentModules isLoading={false}/>
       <AgentSelector isLoading={false} />
       <AgentComparison isLoading={false} />
