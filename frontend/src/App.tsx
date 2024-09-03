@@ -11,7 +11,7 @@ function App() {
   const agentType = useAgentStore(state => state.agents[state.activeAgentIndex].type);
   return (
     <div className={DashBoardStyles.dashboard}>
-      <AgentEnvironment isLoading={false} />
+      <AgentEnvironment />
       <AgentModules isLoading={false}>
         {agentType === "Tree" ? (
           <SkillTree />
