@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import InfoStyles from '../../styles/ModuleInfoTabStyles.module.css'
+import InfoStyles from '../styles/ModuleInfoTabStyles.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faInfo } from '@fortawesome/free-solid-svg-icons'
 import {motion, AnimatePresence} from "framer-motion"

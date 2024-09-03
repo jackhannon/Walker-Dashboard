@@ -8,7 +8,6 @@
   position: absolute;
   border-radius: 2px;
   height: auto;
-  
 }
 
 .container {
@@ -17,19 +16,63 @@
   inset: 0;
 }
 
-
-.infoToggle { 
-  background-color: var(--p-540);
-  width: 1.4rem;
-  height: 1.4rem;
-  font-size: .9rem;
+.infoToggle {
+  background-color: rgb(3, 163, 94);
+  width: 12px;
+  height: 12px;
+  font-size: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 2px 0 0 auto;
   border-radius: 100vh;
   position: absolute;
   z-index: 1000;
 }
+
+/* toggle */
+
+
+
+
+.infoToggle {
+  background-color: var(--p-540);
+  width: 6px;
+  height: 6px;
+  font-size: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2px 0 0 auto;
+  border-radius: 100vh;
+  position: absolute;
+  z-index: 1000;
+}
+
+.skillInfoToggle {
+  background-color: var(--p-540);
+  width: 6px;
+  height: 6px;
+  font-size: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2px 2px 0 auto;
+  border-radius: 100vh;
+  position: absolute;
+  z-index: 1000;
+}
+
+.icon {
+  position: absolute;
+  z-index: 999;
+  top: 50%;
+  transform: translate(50%, -50%);
+  right: 50%;
+  color: var(--d-500);
+  font-size: 1rem;
+}
+
 
 .infoToggle svg {
   color: rgb(21, 255, 0);

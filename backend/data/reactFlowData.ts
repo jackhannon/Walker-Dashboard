@@ -1,294 +1,278 @@
 export const flowChartData = {
   "edges": [
     {
-      "id": "sensor-1=>funnel",
-      "type": "funnelEdge",
+      "id": "perceptor-1=>selector-1",
       "style": {
         "opacity": 1
       },
-      "source": "sensors",
-      "target": "funnel",
-      "sourceHandle": "sensor-1"
-    },
-    {
-      "id": "sensor-2=>funnel",
-      "type": "funnelEdge",
-      "style": {
-        "opacity": 1
-      },
-      "source": "sensors",
-      "target": "funnel",
-      "sourceHandle": "sensor-2"
-    },
-    {
-      "id": "sensor-3=>funnel",
-      "type": "funnelEdge",
-      "style": {
-        "opacity": 1
-      },
-      "source": "sensors",
-      "target": "funnel",
-      "sourceHandle": "sensor-3"
-    },
-    {
-      "id": "sensor-4=>funnel",
-      "type": "funnelEdge",
-      "style": {
-        "opacity": 1
-      },
-      "source": "sensors",
-      "target": "funnel",
-      "sourceHandle": "sensor-4"
-    },
-    {
-      "id": "sensor-5=>funnel",
-      "type": "funnelEdge",
-      "style": {
-        "opacity": 1
-      },
-      "source": "sensors",
-      "target": "funnel",
-      "sourceHandle": "sensor-5"
-    },
-    {
-      "id": "funnel=>perceptors",
-      "type": "roundedEdge",
-      "style": {
-        "opacity": 1
-      },
-      "source": "funnel",
-      "target": "perceptors"
-    },
-    {
-      "id": "skills=>actions",
-      "type": "roundedEdge",
-      "style": {
-        "opacity": 1
-      },
-      "source": "skills-collection-default",
-      "target": "actions"
-    },
-    {
-      "id": "perceptors=>selector-pclgrwm",
-      "type": "selectorEdge",
-      "style": {
-        "opacity": 1
-      },
-      "source": "perceptors",
-      "target": "selector-pclgrwm",
-      "targetHandle": "top"
-    },
-    {
-      "id": "selector-pclgrwm=>skills-collection-default",
-      "type": "selectorEdge",
-      "style": {
-        "opacity": 1
-      },
-      "source": "selector-pclgrwm",
-      "target": "skills-collection-default",
-      "sourceHandle": "bottom"
-    },
-    {
-      "id": "selector-pclgrwm=>selector-dc95igs",
-      "type": "selectorEdge",
-      "style": {
-        "opacity": 1
-      },
-      "source": "selector-pclgrwm",
-      "target": "selector-dc95igs",
+      "source": "perceptor-1",
+      "target": "selector-1",
       "sourceHandle": "bottom",
       "targetHandle": "top"
     },
     {
-      "id": "selector-dc95igs=>skills-collection-lix49lm",
-      "type": "selectorEdge",
+      "id": "perceptor-2=>selector-1",
       "style": {
         "opacity": 1
       },
-      "source": "selector-dc95igs",
-      "target": "skills-collection-lix49lm",
+      "source": "perceptor-2",
+      "target": "selector-1",
+       "sourceHandle": "bottom",
+      "targetHandle": "top"
+    },
+    {
+      "id": "perceptor-3=>selector-1",
+      "style": {
+        "opacity": 1
+      },
+      "source": "perceptor-3",
+      "target": "selector-1",
+      "sourceHandle": "bottom",
+      "targetHandle": "top"
+    },
+
+    {
+      "id": "selector-1=>skill-1",
+      "style": {
+        "opacity": 1
+      },
+      "source": "selector-1",
+      "target": "skill-1",
       "sourceHandle": "bottom",
       "targetHandle": "top"
     },
     {
-      "id": "skills-collection-lix49lm=>actions",
-      "type": "roundedEdge",
+      "id": "selector-1=>skill-2",
       "style": {
         "opacity": 1
       },
-      "source": "skills-collection-lix49lm",
-      "target": "actions",
+      "source": "selector-1",
+      "target": "skill-2",
       "sourceHandle": "bottom",
       "targetHandle": "top"
     },
     {
-      "id": "actions=>sensors",
-      "data": {
-        "leftMostX": -450
+      "id": "selector-1=>skill-3",
+      "style": {
+        "opacity": 1
       },
-      "type": "actionsSensorsEdge",
-      "source": "actions",
-      "target": "sensors",
+      "source": "selector-1",
+      "target": "skill-3",
       "sourceHandle": "bottom",
       "targetHandle": "top"
-    }
+    },
+
+    {
+      "id": "skill-1=>action",
+      "style": {
+        "opacity": 1
+      },
+      "source": "skill-1",
+      "target": "action",
+      "sourceHandle": "bottom",
+      "targetHandle": "top"
+    },
+    {
+      "id": "skill-2=>action",
+      "style": {
+        "opacity": 1
+      },
+      "source": "skill-2",
+      "target": "action",
+      "sourceHandle": "bottom",
+      "targetHandle": "top"
+    },
+    {
+      "id": "skill-3=>action",
+      "style": {
+        "opacity": 1
+      },
+      "source": "skill-3",
+      "target": "action",
+      "sourceHandle": "bottom",
+      "targetHandle": "top"
+    },
+
+    {
+      "id": "action=>input",
+      "style": {
+        "opacity": 1
+      },
+      "source": "action",
+      "target": "input",
+      "sourceHandle": "bottom",
+      "targetHandle": "top"
+    },
   ],
   "nodes": [
     {
-      "id": "sensors",
+      "id": "input",
+      "type": "outer-tree-module",
       "data": {
-        "label": "Sensors"
+        "label": "Input"
       },
-      "type": "sensors",
-      "width": 128,
-      "height": 30,
+      "width": 50,
+      "height": 20,
+      "position": {
+        "x": 0,
+        "y": 0
+      },
+      "positionAbsolute": {
+        "x": 0,
+        "y": 0
+      },
+    },
+
+    {
+      "id": "perceptor-1",
+      "type": "perceptor",
+      "data": {
+        "label": "This is a percieving module"
+      },
+      "width": 100,
+      "height": 40,
       "position": {
         "x": -64,
         "y": 40
       },
-      "draggable": false,
       "positionAbsolute": {
         "x": -64,
         "y": 40
-      }
-    },
-    {
-      "id": "funnel",
-      "data": {},
-      "type": "funnel",
-      "width": 32,
-      "height": 32,
-      "position": {
-        "x": -16,
-        "y": 90
       },
       "draggable": false,
-      "positionAbsolute": {
-        "x": -16,
-        "y": 90
-      }
     },
     {
-      "id": "perceptors",
-      "data": {},
-      "type": "perceptors-collection",
-      "width": 340,
-      "height": 120,
-      "position": {
-        "x": -170,
-        "y": 162
-      },
-      "draggable": false,
-      "positionAbsolute": {
-        "x": -170,
-        "y": 162
-      }
-    },
-    {
-      "id": "skills-collection-default",
+      "id": "perceptor-2",
+      "type": "perceptor",
       "data": {
-        "idx": 2
+        "label": "This is a percieving module"
       },
-      "type": "skills-collection",
-      "style": {
-        "opacity": 1
-      },
-      "width": 340,
-      "height": 292,
+    "width": 100,
+      "height": 40,
       "position": {
-        "x": 110,
-        "y": 479.94112549695427
+        "x": 0,
+        "y": 40
       },
-      "selected": false,
-      "draggable": false,
       "positionAbsolute": {
-        "x": 110,
-        "y": 479.94112549695427
-      }
-    },
-    {
-      "id": "actions",
-      "data": {
-        "label": "Actions"
-      },
-      "type": "actions",
-      "width": 80,
-      "height": 28,
-      "position": {
-        "x": -40,
-        "y": 1078
+        "x": 0,
+        "y": 40
       },
       "draggable": false,
-      "positionAbsolute": {
-        "x": -40,
-        "y": 1078
-      }
     },
     {
-      "id": "selector-pclgrwm",
+      "id": "perceptor-3",
+      "type": "perceptor",
       "data": {
-        "idx": 0
+        "label": "This is a percieving module"
       },
+   "width": 100,
+      "height": 40,
+      "position": {
+        "x": 64,
+        "y": 40
+      },
+      "positionAbsolute":  {
+        "x": 64,
+        "y": 40
+      },
+      "draggable": false,
+    },
+
+
+    {
+      "id": "selector-1",
       "type": "selector",
-      "style": {
-        "opacity": 1
+      "data": {
+        "label": "This is a selecting module"
       },
-      "width": 48,
-      "height": 48,
+      "width": 60,
+      "height": 60,
       "position": {
-        "x": -24,
-        "y": 351.94112549695427
+        "x": 0,
+        "y": 80
       },
-      "selected": false,
       "positionAbsolute": {
-        "x": -24,
-        "y": 351.94112549695427
-      }
+        "x": 0,
+        "y": 80
+      },
+      "draggable": false,
+    },
+
+
+    {
+      "id": "skill-1",
+      "type": "skill",
+      "data": {
+        "label": "This is a skill module"
+      },
+  "width": 100,
+      "height": 40,
+      "position": {
+        "x": -64,
+        "y": 120
+      },
+      "positionAbsolute": {
+        "x": -64,
+        "y": 120
+      },
+      "draggable": false,
     },
     {
-      "id": "selector-dc95igs",
+      "id": "skill-2",
+      "type": "skill",
       "data": {
-        "idx": 0
+        "label": "This is a skill module"
       },
-      "type": "selector",
-      "style": {
-        "opacity": 1
-      },
-      "width": 48,
-      "height": 48,
+  "width": 100,
+      "height": 40,
       "position": {
-        "x": -204,
-        "y": 601.9411254969543
+        "x": 0,
+        "y": 120
       },
       "positionAbsolute": {
-        "x": -204,
-        "y": 601.9411254969543
-      }
+        "x": 0,
+        "y": 120
+      },
+      "draggable": false,
     },
     {
-      "id": "skills-collection-lix49lm",
+      "id": "skill-3",
+      "type": "skill",
       "data": {
-        "idx": 0
+        "label": "This is a skill module"
       },
-      "type": "skills-collection",
-      "style": {
-        "opacity": 1
-      },
-      "width": 540,
-      "height": 136,
+    "width": 100,
+      "height": 40,
       "position": {
-        "x": -450,
-        "y": 851.9411254969543
+        "x": 64,
+        "y": 120
       },
       "positionAbsolute": {
-        "x": -450,
-        "y": 851.9411254969543
-      }
+        "x": 64,
+        "y": 120
+      },
+      "draggable": false,
+    },
+    {
+      "id": "action",
+      "type": "outer-tree-module",
+      "data": {
+        "label": "Action"
+      },
+      "width": 50,
+      "height": 20,
+      "position": {
+        "x": 0,
+        "y": 160
+      },
+      "positionAbsolute": {
+        "x": 0,
+        "y": 160
+      },
+      "draggable": false,
     }
   ],
   "viewport": {
-    "x": 1088,
-    "y": 50.800589836660606,
-    "zoom": 0.8868818058076225
+    
   }
 }

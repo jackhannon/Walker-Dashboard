@@ -279,9 +279,12 @@
 
 
 .flowChartContainer {
-  overflow: visible;
-  position: absolute;
-  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.flowChartContainer .react-flow__pane {
+ left: 50% !important
 }
 
 .skillModule {
@@ -338,8 +341,8 @@
 
 .perceptiveModule {
   position: relative;
-  height: 7rem;
-  width: 10rem;
+  width: 100%;
+  height: 100%
 }
 
 .perceptiveModuleShape {

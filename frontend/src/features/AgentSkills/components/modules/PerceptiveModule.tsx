@@ -1,19 +1,16 @@
 import { faEye } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import SkillStyles from '../styles/SkillStyles.module.css'
-import ModuleInfoTab from './ModuleInfoTab';
+import SkillStyles from '../../styles/SkillTreeStyles.module.css'
+import ModuleInfoTab from '../ModuleInfoTab';
+import { ModuleNodeProps } from '../../flowTypes';
+import ModuleInfoTabStyles from '../../styles/ModuleInfoTabStyles.module.css'
 
-
-type Props = {
-  info: string;
-}
-const PerceptiveModule: React.FC<Props> = ({info}) => {
+const PerceptiveModule: React.FC<ModuleNodeProps> = ({data}) => {
   return (
-    <div className={`${SkillStyles.perceptiveModule}`}
-    >
-      <ModuleInfoTab toggleStyles={SkillStyles.infoToggle} info={info}/>
+    <div className={SkillStyles.perceptiveModule}>
+      <ModuleInfoTab toggleStyles={SkillStyles.infoToggle} info={data.info}/>
       <div className={`${SkillStyles.perceptiveModuleShape} ${SkillStyles.module}`}>
-        <FontAwesomeIcon icon={faEye} className={SkillStyles.icon} />
+        <FontAwesomeIcon icon={faEye} className={ModuleInfoTabStyles.icon} />
       </div>
     </div>
   )

@@ -90,25 +90,17 @@
 }
 
 
-
-.perceptionLayer {
-  width: 100%;
-  position: relative;
-  padding: 27px 0 27px 0;
-
-}
-
-
 .perceptiveModuleContainer {
   position: relative;
   overflow: visible;
-  width: var(--module-width);
+  width: 100%;
+  height: 100%;
 }
 
 .perceptiveModule {
   position: relative;
-  height: 20px;
-  width: 29.1px;
+  height: 100%;
+  width: 100%;
 }
 
 .perceptiveModuleShape {
@@ -174,8 +166,8 @@
 }
 
 .skillModule {
-  height: 20px;
-  width: 29.1px;
+  height: 100%;
+  width: 100%;
   position: relative;
   background-color: var(--p-500);
   z-index: 999;
@@ -195,20 +187,7 @@
 
 
 
-.infoToggle {
-  background-color: rgb(3, 163, 94);
 
-  width: 6px;
-  height: 6px;
-  font-size: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 2px 0 0 auto;
-  border-radius: 100vh;
-  position: absolute;
-  z-index: 1000;
-}
 
 
 

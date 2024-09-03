@@ -20,7 +20,7 @@ type State = {
   isConnected: boolean;
   changeActiveAgent: (index: number) => void;
   reset: () => void;
-  flowChart: ReactFlowJsonObject | object;
+  flowChart: ReactFlowJsonObject | null;
 };
 
 export const useAgentStore = create<State>((set) => {
@@ -67,6 +67,6 @@ export const useAgentStore = create<State>((set) => {
     changeActiveAgent,
     reset,
     onFrameGet,
-    flowChart: {}
+    flowChart: null
   };
 });

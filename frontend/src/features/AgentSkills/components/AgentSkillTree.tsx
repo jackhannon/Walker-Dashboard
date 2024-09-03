@@ -1,30 +1,28 @@
-import { ReactFlow } from '@xyflow/react'
-import { useAgentStore } from '../../../store'
+import { ReactFlow, ReactFlowJsonObject } from '@xyflow/react'
 import ModuleStyles from "../styles/ModuleStyles.module.css"
 import OuterModule from './modules/OuterModule'
 import SelectiveModule from './modules/SelectiveModule'
+import PerceptiveModule from './modules/PerceptiveModule'
+import SkillModule from './modules/SkillModule'
 
-const AgentSkillTree = () => {
-  const flowChartData = useAgentStore(state => state.flowChart)
+type Props = {
+  flowChart: ReactFlowJsonObject
+}
+
+const AgentSkillTree: React.FC<Props> = ({flowChart}) => {
   return (
     <div className={ModuleStyles.flowChartContainer}>
       <ReactFlow
-        nodes={flowChartData.nodes}
-        edges={flowChartData.edges}
-        edgeTypes={
-          funnelEdge,
-          roundedEdge,
-          selectorEdge,
-          actionsSensorsEdge,
-        }
+        nodes={flowChart.nodes}
+        edges={flowChart.edges}
         nodeTypes={{
-          funnel,
-          perceptors-collection,
-          skills-collection,
-          actions: OuterModule,
-          sensors: OuterModule,
-          selector: SelectiveModule
+          action: OuterModule,
+          input: OuterModule,
+          selector: SelectiveModule,
+          perceptor: PerceptiveModule,
+          skill: SkillModule
         }}
+
         fitView
       />
     </div>
