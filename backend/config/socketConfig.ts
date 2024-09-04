@@ -17,32 +17,28 @@ function socketConfig() {
 
 
   io.on("connection", (socket: Socket) => {
+    socket
+    socket.emit("terrain", terrainData)
+
+     let index = 0
     console.log("user connected")
-    let intervalId: NodeJS.Timeout;
-    
-    socket.on("agent", (agentId: string) => {
-      //make this specific to agent 
-      socket.emit("terrain", terrainData)
+    const intervalId = setInterval(() => {
+      socket.emit("frame", getFrameFromIndex(index))
+      
+      index+=1;
+      if (index > walkData.length-1) {
+        index = 0;
+      }
+    }, 20)
 
-      let index = 0
-      intervalId = setInterval(() => {
-        //make this specific to agent
-        socket.emit("frame", getFrameFromIndex(index))
-        
-        index+=1;
-        if (index > walkData.length-1) {
-          index = 0;
-        }
-      }, 20)
-    })
-
-    
     socket.on('disconnect', () => {
       clearInterval(intervalId);
+      index = 0;
       console.log("a user disconnected");
     })
 
     socket.on('reset', () => {
+      index = 0;
       console.log("resetting environment");
     })
   });
