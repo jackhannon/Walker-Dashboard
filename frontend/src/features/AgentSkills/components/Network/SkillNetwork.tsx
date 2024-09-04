@@ -1,4 +1,4 @@
-import SkillStyles from '../../styles/SkillStyles.module.css'
+import SkillStyles from '../../styles/SkillTreeStyles.module.css'
 import NetworkLayer from './NetworkLayer'
 import NetworkModule from './NetworkModule'
 import { motion } from 'framer-motion'

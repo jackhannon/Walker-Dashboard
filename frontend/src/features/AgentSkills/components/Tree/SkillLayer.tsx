@@ -1,4 +1,4 @@
-import SkillStyles from '../../styles/SkillStyles.module.css'
+import SkillStyles from '../../styles/SkillTreeStyles.module.css'
 import SkillModule from '../SkillModule'
 import SelectiveModule from './SelectiveModule'
 
@@ -6,9 +6,9 @@ type Props = {
   activeSkillPosition?: number
 }
 
-const skillInfo = "This module adjusts the yaw"
+const skillInfo = "This is a skill module"
 
-const selectiveInfo = "This module selects a skill to use"
+const selectiveInfo = "This is a selective module"
 
 const SkillLayer:React.FC<Props> = () => {
   return (

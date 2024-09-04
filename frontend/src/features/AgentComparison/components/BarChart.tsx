@@ -2,9 +2,6 @@ import { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 import ChartStyles from '../styles/ChartStyles.module.css';
 
-type Props = {
-}
-
 const data = [
   { 
     name: "agent 1", 
@@ -39,7 +36,7 @@ const data = [
 ];
 
 
-const BarChart: React.FC<Props> = () => {
+const BarChart = () => {
   const svgRef = useRef(null);
   const margin = { top: 20, right: 20, bottom: 35, left: 35 }
   const height = 350;

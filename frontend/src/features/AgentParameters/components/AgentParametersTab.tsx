@@ -22,15 +22,10 @@ const AgentParametersTab = () => {
     <div className={ParametersTabStyles.parametersContainer}>
       Hull size: {hullValue}
       <Slider value={hullValue} handleValueChange={handlHullChange}/>
-      {/* <div className={ParametersTabStyles.slider}>
-
-      </div> */}
 
       Femur length: {femurValue}
       <Slider value={femurValue} handleValueChange={handleFemurChange}/>
-      {/* <div className={ParametersTabStyles.slider}>
-        
-      </div> */}
+  
 
       Terrain difficulty:
       <div className={ParametersTabStyles.radios}>

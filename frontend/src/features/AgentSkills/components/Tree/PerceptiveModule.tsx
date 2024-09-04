@@ -1,6 +1,6 @@
 import { faEye } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import SkillStyles from '../../styles/SkillStyles.module.css'
+import SkillStyles from '../../styles/SkillTreeStyles.module.css'
 import ModuleInfoTab from '../ModuleInfoTab';
 
 

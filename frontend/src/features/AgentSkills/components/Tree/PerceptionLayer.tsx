@@ -1,11 +1,11 @@
 import PerceptiveModule from './PerceptiveModule'
-import SkillStyles from '../../styles/SkillStyles.module.css'
+import SkillStyles from '../../styles/SkillTreeStyles.module.css'
 
 type Props = {
   activePerceptorPosition?: number
 }
 
-const info = "This module percieves the wind speed"
+const info = "This is a perceptor"
 
 const PerceptionLayer:React.FC<Props> = () => {
   return (

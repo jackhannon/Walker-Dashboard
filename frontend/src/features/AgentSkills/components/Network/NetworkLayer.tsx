@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react'
-import SkillStyles from '../../styles/SkillStyles.module.css'
+import SkillStyles from '../../styles/SkillTreeStyles.module.css'
 
 type Props = {
   children: ReactElement

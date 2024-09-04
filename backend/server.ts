@@ -6,6 +6,7 @@ import { credentials } from "./middleware/credentials.js";
 import { corsOptions } from "./config/corsOptions.js";
 import envConfig from "./config/envConfig.js";
 import socketConfig from "./config/socketConfig.js";
+import robotRoutes from "./routes/robotRoutes.js";
 
 
 async function startServer() {
@@ -18,11 +19,13 @@ async function startServer() {
   app.use(cors(corsOptions));
   app.use(express.urlencoded({ extended: false }));
   app.use(express.json());
-  // app.use("/", robotRoutes)
+  app.use("/", robotRoutes)
 
   app.get("/", (req, res) => {
     res.send("Hello, this is the root endpoint!");
   });
+
+
   
   app.use(errorHandler);
   app.use(notFound);

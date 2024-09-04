@@ -71,11 +71,6 @@
   border-radius: 10vh;
   font-size: .25rem;
   margin: 0 auto;
-
-  /* display: flex;
-  justify-content: center;
-  flex-direction: column; */
-
 }
 
 
@@ -227,13 +222,50 @@
 
 
 
+.infoToggle {
+  background-color: var(--p-540);
+  width: 6px;
+  height: 6px;
+  font-size: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2px 0 0 auto;
+  border-radius: 100vh;
+  position: absolute;
+  z-index: 1000;
+}
+
+.skillInfoToggle {
+  background-color: var(--p-540);
+  width: 6px;
+  height: 6px;
+  font-size: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2px 2px 0 auto;
+  border-radius: 100vh;
+  position: absolute;
+  z-index: 1000;
+}
+
+.icon {
+  position: absolute;
+  z-index: 999;
+  top: 50%;
+  transform: translate(50%, -50%);
+  right: 50%;
+  color: var(--d-500);
+  font-size: .5rem;
+}
+
+
 
 
 
 
 /* svg trace */
-
-
 
 .svgOutline {
   z-index: 999;
@@ -244,7 +276,7 @@
 .svgOutline path {
   fill: transparent;
   stroke: var(--p-500);
-  stroke-width: 2px;
+  stroke-width: 3px;
   stroke-dasharray: 2500;
   stroke-linejoin: round;
   stroke-linecap: round;
@@ -259,36 +291,6 @@
   filter: blur(var(--glow-blur-size));
 }
 
-.inputConnector path {
-
-}
-
-.perceptiveModuleContainer .svgOutline path {
-  animation-delay: 200ms;
-}
-
-.perceptionModuleConnector .glowBlur, 
-.perceptionModuleConnector .glowLine {
-  animation-delay: 400ms;
-} 
-
-.selectiveModuleContainer .svgOutline path {
-  animation-delay: 600ms;
-}
-
-.skillModuleConnector .glowBlur, 
-.skillModuleConnector .glowLine {
-  animation-delay: 800ms;
-}
-
-.skillModule .svgOutline path {
-  animation-delay: 1000ms;
-}
-
-.decisionLayer .svgOutline path  {
-  animation-delay: 1200ms;
-
-}
 
 @keyframes draw {
   from {

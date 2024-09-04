@@ -21,13 +21,6 @@
   transition: width linear .6s;
  }
  
- .hoveredAgentTag {
-   width: 10rem;
- }
- 
- .unhoveredAgentTag {
-  
- }
  
  
  .agentInfoTag p {
@@ -126,6 +119,3 @@
   background-color: var(--p-500);
 }
 
-.speedometer {
-  
-}

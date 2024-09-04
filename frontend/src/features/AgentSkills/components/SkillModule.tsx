@@ -1,4 +1,4 @@
-import SkillStyles from '../styles/SkillStyles.module.css'
+import SkillStyles from '../styles/SkillTreeStyles.module.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHand } from '@fortawesome/free-solid-svg-icons'
 import { ReactNode } from 'react'

@@ -1,10 +1,8 @@
 import { create } from 'zustand';
-import { RawFrame, Terrain } from '../types';
+import { Frame, RawFrame, Terrain } from '../types';
 import { socket } from './services/socket';
-import { initialWalkerFrame } from './initialData/InitialWalkerFrame';
-import { initialWalkerTerrain } from './initialData/InitialWalkerTerrain';
-import { ProcessedFrame, ProcessedNullFrame } from './utils/FrameNormalizationClasses';
-import { WalkerNullTerrain, WalkerTerrain } from './utils/TerrainNormalizationClasses';
+import { processFrame } from './utils/processFrame';
+
 
 type Agent = {
   type: string;
@@ -14,15 +12,16 @@ type Agent = {
 type State = {
   agents: Agent[];
   activeAgentIndex: number;
-  frame: ProcessedFrame | ProcessedNullFrame;
-  terrain: WalkerNullTerrain | WalkerTerrain;
+  frame: Frame | null;
+  terrain: Terrain | null;
   isConnected: boolean;
   changeActiveAgent: (index: number) => void;
   reset: () => void;
-  error: string | null
+  error: string | null,
+  activeTreePath: {perceptorIndex: number, skillIndex: number}
 };
 
-export const useAgentStore = create<State>((set) => {
+export const useAgentStore = create<State>((set, get) => {
   let timeoutId: NodeJS.Timeout;
 
   function resetTimeout() {
@@ -33,13 +32,31 @@ export const useAgentStore = create<State>((set) => {
     }, 10000);
   }
 
+  // purely theatrical effect
+  function changeActiveTreePath() {
+    setInterval(() => {
+      const { activeTreePath } = get();
+      let perceptorIndex = Math.floor(Math.random()*3)
+      let skillIndex = Math.floor(Math.random()*3)
+      while (perceptorIndex === activeTreePath.perceptorIndex) {
+        perceptorIndex = Math.floor(Math.random()*3)
+        console.log("loop")
+      }
+      while (skillIndex === activeTreePath.skillIndex) {
+        skillIndex = Math.floor(Math.random()*3)
+        console.log("loop")
+      }
+      set({ activeTreePath: {perceptorIndex, skillIndex}})
+    }, 5000)
+  }
+
   function onFrameGet(frame: RawFrame) {
-    set({ frame: new ProcessedFrame(frame) });
+    set({ frame: processFrame(frame) });
     resetTimeout()
   }
 
   function onTerrainGet(terrain: Terrain) {
-    set({ terrain: new WalkerTerrain(terrain) });
+    set({ terrain: terrain });
     resetTimeout()
   }
   function reset() {
@@ -50,9 +67,12 @@ export const useAgentStore = create<State>((set) => {
     set({ activeAgentIndex: index });
     reset()
   }
+
   
+  changeActiveTreePath()
   socket.on("frame", onFrameGet)
   socket.on("terrain", onTerrainGet)
+ 
 
   return {
     agents: [
@@ -66,12 +86,13 @@ export const useAgentStore = create<State>((set) => {
       },
     ],
     activeAgentIndex: 0,
-    frame: initialWalkerFrame,
-    terrain: initialWalkerTerrain,
+    frame: null,
+    terrain: null,
     isConnected: false,
     changeActiveAgent,
     reset,
     onFrameGet,
+    activeTreePath: {perceptorIndex: 0, skillIndex: 0},
     error: null
   };
 });

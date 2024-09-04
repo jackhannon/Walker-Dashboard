@@ -1,6 +1,6 @@
 import './App.css'
 import AgentComparison from './features/AgentComparison/components/AgentComparison';
-import AgentEnvironment from './features/AgentEnvironment/components/AgentEnvironment';
+import AgentEnvironment from './features/AgentEnvironment/components/AgentEnvironmentContainer';
 import AgentSelector from './features/AgentSelector/components/AgentSelector';
 import AgentModules from './features/AgentSkills/components/AgentModules';
 import SkillNetwork from './features/AgentSkills/components/Network/SkillNetwork';
