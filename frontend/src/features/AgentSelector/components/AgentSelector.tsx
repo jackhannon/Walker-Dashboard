@@ -8,15 +8,10 @@ import { useShallow } from 'zustand/react/shallow'
 import NetworkSVG from './NetworkSVG'
 import { useAgentStore } from '../../../store'
 import InfoTab from '../../../components/InfoTab/InfoTab'
-import Spinner from '../../../components/Spinner'
 import Pagination from '../../../components/DotPagination/Pagination'
+import Disconnected from '../../../components/Disconnected'
 
-
-type Props = {
-  isLoading: boolean
-}
-
-const AgentSelector: React.FC<Props> = ({isLoading}) => {
+const AgentSelector = () => {
   const { changeActiveAgent, agents } = useAgentStore(
     useShallow((state) => ({
       changeActiveAgent: state.changeActiveAgent,
@@ -27,16 +22,14 @@ const AgentSelector: React.FC<Props> = ({isLoading}) => {
   const changeAgent = (index: number) => {
     changeActiveAgent(index)
   }
-  
+  //not using fetch HOC in pagination to retain modularity
   return (
     <div className={DashBoardStyles.agentSelectorContainer}>
       <div className={DashBoardStyles.label}>Agent Selector</div>
       <InfoTab />
-      {isLoading ? (
-        <Spinner/>
-      ) : (
-        <Pagination handleChange={changeAgent}>
-          {agents.map((agent, index)=> (
+      <Pagination handleChange={changeAgent}>
+        {agents.length ? (
+          agents.map((agent, index)=> (
             <motion.div 
               key={index}
               className={DotPaginationStyles.information}
@@ -50,7 +43,7 @@ const AgentSelector: React.FC<Props> = ({isLoading}) => {
                 }
               }}
             >
-              {agent.type === "Tree" ? (
+              {agent.name === "Tree" ? (
                 <FontAwesomeIcon icon={faBrain} />
               ) : (
                 <NetworkSVG/>
@@ -59,10 +52,11 @@ const AgentSelector: React.FC<Props> = ({isLoading}) => {
                 {agent.description}
               </p>
             </motion.div>
-          ))}
-        </Pagination>
-      )}
-      
+          )) 
+        ) : (
+          <Disconnected message='Disconnected from socket'/>
+        )}
+      </Pagination>
     </div>
   )
 }

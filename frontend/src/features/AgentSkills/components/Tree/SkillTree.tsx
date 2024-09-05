@@ -4,11 +4,12 @@ import PerceptionLayer from './PerceptionLayer'
 import SkillLayer from './SkillLayer'
 import { motion } from 'framer-motion'
 import Trace from './Trace'
+import withFetchState from '../../../../HOC/FetchStateHOC'
 type Props = {
   perceptorId?: number
   skillId?: number
 }
-const SkillTree:React.FC<Props> = () => {
+const SkillTree:React.FC<Props> = withFetchState(() => {
   const {perceptorId, skillId} = useAgentStore(state => {
     return {
       perceptorId: state.activeTreePath.perceptorIndex,
@@ -48,6 +49,6 @@ const SkillTree:React.FC<Props> = () => {
       </svg>
     </motion.svg>
   )
-}
+})
 
 export default SkillTree

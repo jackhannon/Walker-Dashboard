@@ -6,6 +6,7 @@ const AgentParametersTab = () => {
   const [hullValue, setHullValue] = useState(0);
   const [femurValue, setFemurValue] = useState(0);
   const [difficulty, setDifficulty] = useState<"easy" | "medium" | "hard">("easy")
+
   const handlHullChange = (value: number) => {
     setHullValue(value)
   }
@@ -25,7 +26,6 @@ const AgentParametersTab = () => {
 
       Femur length: {femurValue}
       <Slider value={femurValue} handleValueChange={handleFemurChange}/>
-  
 
       Terrain difficulty:
       <div className={ParametersTabStyles.radios}>

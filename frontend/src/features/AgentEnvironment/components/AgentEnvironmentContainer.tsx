@@ -1,31 +1,22 @@
-import Disconnected from "../../../components/Disconnected"
-import Spinner from "../../../components/Spinner"
 import Environment from "./Environment"
 import DashBoardStyles from '../../../DashBoardStyles.module.css'
 import { useAgentStore } from "../../../store"
+import { Frame, Terrain } from "../../../../types"
 
 const AgentEnvironment:React.FC = () => {
-  const {frame, terrain, error} = useAgentStore(state => {
+  const {frame, terrain } = useAgentStore(state => {
     return {
       frame: state.frame,
       terrain: state.terrain,
-      error: state.error
     }
   });
 
   return (
     <div className={DashBoardStyles.agentEnvironmentContainer}>
       <div className={DashBoardStyles.label}>Agent Environment</div>
-        {error ? (
-          <Disconnected message={error} />
-        ) : (frame === null || terrain === null) ? (
-          <Spinner />
-        ) : (     
-          <Environment frame={frame} terrain={terrain}/>
-        )}
-        
+      <Environment frame={frame as Frame} terrain={terrain as Terrain}/> 
     </div>
   )
 }
 
-export default AgentEnvironment
+export default  AgentEnvironment

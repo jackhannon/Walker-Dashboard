@@ -1,11 +1,6 @@
 import { NextFunction, Request, Response } from "express"
 import makeQuery from "../utils/makeQuery"
 
-type ProcessedPoint = {
-  speed: number,
-  distance: number
-}
-
 type RawFrame = {
   "Hull angle": number,
   "Hull angular speed": number,
@@ -30,11 +25,12 @@ async function getAgents(req: Request, res: Response, next: NextFunction) {
       SELECT * from agent
     `;
     const agents = await makeQuery(GET_AGENT);
-    res.send(agents)
+    res.send(agents.rows)
   } catch (error) {
     next(error)
   }
 }
+
 
 async function persistAgent(agentName: string, agentDescription: string) {
   try {
@@ -46,7 +42,6 @@ async function persistAgent(agentName: string, agentDescription: string) {
   } catch (error) {
     console.log("could not add agent:", error)
   }
-  
 }
 
 
@@ -68,7 +63,6 @@ async function persistAgentData(frames: RawFrame[], agentId: string) {
   } catch (error) {
     console.log("could not add agent:", error)
   }
-
 }
 
 

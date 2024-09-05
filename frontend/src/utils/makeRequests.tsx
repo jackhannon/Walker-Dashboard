@@ -1,13 +1,13 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || `http://localhost:4000`,
+  baseURL: import.meta.env.VITE_API_URL || `http://localhost:3000`,
   withCredentials: true
 })
 
-const makeRequest = async (url: string, options?: object) => {
-  const result = await api(url, options);
+async function makeRequest<T>(url: string, options?: object): Promise<T> {
+  const result = await api(url, options)
   return result.data;
 }
 
-export default makeRequest;
+export default makeRequest

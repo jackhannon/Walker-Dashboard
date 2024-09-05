@@ -1,77 +1,42 @@
 import { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 import ChartStyles from '../styles/ChartStyles.module.css';
-
-type Props = {
-}
-
-const data = [
-  { 
-    name: "agent 1", 
-    data: [
-      { distance: 0, speed: 0 }, 
-      { distance: 1, speed: 0.5 }, 
-      { distance: 2, speed: 1 }, 
-      { distance: 3, speed: 1.2 }, 
-      { distance: 4, speed: 1.5 }, 
-      { distance: 5, speed: 1.8 }, 
-      { distance: 6, speed: 2 }, 
-      { distance: 7, speed: 2.2 }, 
-      { distance: 8, speed: 2.4 }, 
-      { distance: 9, speed: 2.5 }
-    ]
-  },
-  { 
-    name: "agent 2", 
-    data: [
-      { distance: 0, speed: 0 }, 
-      { distance: 1, speed: 1 }, 
-      { distance: 2, speed: 2 }, 
-      { distance: 3, speed: 2.5 }, 
-      { distance: 4, speed: 3 }, 
-      { distance: 5, speed: 3 }, 
-      { distance: 6, speed: 3.2 }, 
-      { distance: 7, speed: 3.4 }, 
-      { distance: 8, speed: 3.5 }, 
-      { distance: 9, speed: 3.8 }
-    ]
-  }
-];
+import withFetchState from '../../../HOC/FetchStateHOC';
+import { useAgentStore } from '../../../store';
 
 
-const LineChart: React.FC<Props> = () => {
+
+const LineChart = withFetchState(() => {
+  const agents = useAgentStore(state => state.agents);
+  console.log("agents", agents)
   const svgRef = useRef(null);
-  const margin = { top: 20, right: 20, bottom: 35, left: 35 }
+  const margin = { top: 20, right: 20, bottom: 35, left: 35 };
   const height = 350;
   const width = 350;
 
   useEffect(() => {
     const element = svgRef.current;
     
-const tooltip = d3
-  .select("body")
-  .append("div")
-  .style("position", "absolute")
-  .style("background-color", "white")
-  .style("padding", "5px")
-  .style("border", "1px solid #ccc")
-  .style("border-radius", "3px")
-  .style("pointer-events", "none")
-  .style("opacity", "0")
-  .style("transition", "all 0.3s");
-
-
-
-
+    const tooltip = d3
+      .select("body")
+      .append("div")
+      .style("position", "absolute")
+      .style("background-color", "white")
+      .style("padding", "5px")
+      .style("border", "1px solid #ccc")
+      .style("border-radius", "3px")
+      .style("pointer-events", "none")
+      .style("opacity", "0")
+      .style("transition", "all 0.3s");
 
     const svg = d3.select(element)
 
     let xValues: number[] = [];
     let yValues: number[] = [];
-  
-    data.forEach(agent => {
-      xValues = xValues.concat(agent.data.map(data => data.distance));
-      yValues = yValues.concat(agent.data.map(data => data.speed));
+    
+    agents.forEach(agent => {
+      xValues = xValues.concat(agent.data_points.map(data => data.distance));
+      yValues = yValues.concat(agent.data_points.map(data => data.speed));
     });
 
     const x = d3.scaleLinear()
@@ -91,10 +56,10 @@ const tooltip = d3
         .curve(d3.curveCatmullRom.alpha(0.5));
 
      const path = svg.selectAll('.line')
-        .data(data)
+        .data(agents)
         .enter().append('path')
         .attr('class', 'line')
-        .attr('d', d => line(d.data))
+        .attr('d', d => line(d.data_points))
         .attr('stroke-width', '2')
         .style('fill', 'none')
         .attr('stroke', (_d, i) => color(String(i)))
@@ -179,6 +144,6 @@ const tooltip = d3
       className={ChartStyles.chartContainer}
     ></svg>
   );
-}
+})
 
 export default LineChart;

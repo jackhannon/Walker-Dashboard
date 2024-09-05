@@ -1,8 +1,9 @@
+import withFetchState from '../../../../HOC/FetchStateHOC'
 import SkillStyles from '../../styles/SkillTreeStyles.module.css'
 import NetworkLayer from './NetworkLayer'
 import NetworkModule from './NetworkModule'
 import { motion } from 'framer-motion'
-const SkillNetwork = () => {
+const SkillNetwork = withFetchState(() => {
   return (
     <motion.svg 
       className={SkillStyles.view}
@@ -82,6 +83,6 @@ const SkillNetwork = () => {
       </svg>
     </motion.svg>
   )
-}
+})
 
 export default SkillNetwork

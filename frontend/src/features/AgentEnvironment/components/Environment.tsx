@@ -7,6 +7,7 @@ import * as d3 from 'd3';
 import { Frame, Terrain } from "../../../../types"
 import EnvironmentMinimap from "./EnvironmentMinimap"
 import AgentParametersTab from "../../AgentParameters/components/AgentParametersTab"
+import withFetchState from "../../../HOC/FetchStateHOC"
 
 
 type Props = {
@@ -14,7 +15,7 @@ type Props = {
   terrain: Terrain
 }
 
-const Environment: React.FC<Props> = ({frame, terrain}) => {
+const Environment: React.FC<Props> = withFetchState(({frame, terrain}) => {
 
   function extendTerrain(terrain: Terrain) {
     const newTerrain = [...terrain]
@@ -29,7 +30,6 @@ const Environment: React.FC<Props> = ({frame, terrain}) => {
     newTerrain.push([newTerrain[newTerrain.length-1][0] + 10, newTerrain[newTerrain.length-1][1]])
     return newTerrain
   }
-
 
   //if terrain is lost by store, but frames are still coming through we will still have it
   const terrainRef = useRef<Terrain>()
@@ -132,6 +132,6 @@ const Environment: React.FC<Props> = ({frame, terrain}) => {
       </div>
     </>
   )
-}
+})
 
 export default Environment

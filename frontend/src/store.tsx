@@ -1,13 +1,11 @@
 import { create } from 'zustand';
-import { Frame, RawFrame, Terrain } from '../types';
-import { socket } from './services/socket';
+import { Agent, Frame, RawFrame, Terrain } from '../types';
 import { processFrame } from './utils/processFrame';
+import { getAgents } from './services/services';
+import { io, Socket } from 'socket.io-client';
 
 
-type Agent = {
-  type: string;
-  description: string;
-};
+
 
 type State = {
   agents: Agent[];
@@ -16,10 +14,12 @@ type State = {
   terrain: Terrain | null;
   isConnected: boolean;
   changeActiveAgent: (index: number) => void;
-  reset: () => void;
   error: string | null,
   activeTreePath: {perceptorIndex: number, skillIndex: number}
 };
+
+
+let socket: Socket;
 
 export const useAgentStore = create<State>((set, get) => {
   let timeoutId: NodeJS.Timeout;
@@ -39,58 +39,80 @@ export const useAgentStore = create<State>((set, get) => {
       let perceptorIndex = Math.floor(Math.random()*3)
       let skillIndex = Math.floor(Math.random()*3)
       while (perceptorIndex === activeTreePath.perceptorIndex) {
-        perceptorIndex = Math.floor(Math.random()*3)
-        console.log("loop")
+        perceptorIndex = Math.floor(Math.random()*3);
       }
       while (skillIndex === activeTreePath.skillIndex) {
-        skillIndex = Math.floor(Math.random()*3)
-        console.log("loop")
+        skillIndex = Math.floor(Math.random()*3);
       }
-      set({ activeTreePath: {perceptorIndex, skillIndex}})
+      set({ activeTreePath: {perceptorIndex, skillIndex}});
     }, 5000)
   }
 
+  
   function onFrameGet(frame: RawFrame) {
+    //we only sure we are connected and working once frames start coming though!
+    set({isConnected: true})
     set({ frame: processFrame(frame) });
-    resetTimeout()
+    resetTimeout();
   }
 
   function onTerrainGet(terrain: Terrain) {
     set({ terrain: terrain });
-    resetTimeout()
+    resetTimeout();
   }
-  function reset() {
-    socket.emit('reset');
-  }
-  
+
   function changeActiveAgent(index: number) {
     set({ activeAgentIndex: index });
-    reset()
+    const { agents } = get();
+    socket.emit("agent", {name: agents[0].name, id: agents[0].id})
   }
 
+  async function initializeAPI() {
+    try {
+      const agents = await getAgents();
+      const {activeAgentIndex} = get()
+      set({ agents: agents });
+
+      const connectSocket = new Promise<void>((resolve, reject) => {
+        socket = io(import.meta.env.VITE_SOCKET_URL || 'http://localhost:4000');
   
-  changeActiveTreePath()
-  socket.on("frame", onFrameGet)
-  socket.on("terrain", onTerrainGet)
- 
+        socket.on('connect', () => {
+          console.log('Socket connected');
+          resolve();
+        });
+  
+        socket.on('connect_error', (error) => {
+          console.error('Socket connection error:', error);
+          reject(error);
+        });
+  
+        socket.on('disconnect', () => {
+          console.log('Socket disconnected');
+          set({error: "Disconnected from socket"});
+        });
+
+        socket.on('frame', onFrameGet);
+        socket.on('terrain', onTerrainGet);
+
+        socket.emit("agent", agents[activeAgentIndex].id)
+      });
+      await connectSocket;
+      changeActiveTreePath();
+    } catch (error) {
+      console.error('Failed to initialize API', error);
+      set({error: "Failed to connect"});
+    } 
+  }
+
+  initializeAPI()
 
   return {
-    agents: [
-      {
-        type: 'Tree',
-        description: 'An agent which performs one skill at a time using selective and perceptive concepts',
-      },
-      {
-        type: 'Network',
-        description: 'An agent which uses skills relying on skills to drive a feedback loop',
-      },
-    ],
+    agents: [],
     activeAgentIndex: 0,
     frame: null,
     terrain: null,
     isConnected: false,
     changeActiveAgent,
-    reset,
     onFrameGet,
     activeTreePath: {perceptorIndex: 0, skillIndex: 0},
     error: null

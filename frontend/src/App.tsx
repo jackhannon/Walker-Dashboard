@@ -8,19 +8,19 @@ import { useAgentStore } from './store';
 import DashBoardStyles from './DashBoardStyles.module.css'
 import SkillTree from './features/AgentSkills/components/Tree/SkillTree';
 function App() {
-  const agentType = useAgentStore(state => state.agents[state.activeAgentIndex].type);
+  const agentType = useAgentStore(state => state?.agents[state.activeAgentIndex]?.name);
   return (
     <div className={DashBoardStyles.dashboard}>
-      <AgentEnvironment />
-      <AgentModules isLoading={false}>
+      <AgentEnvironment/>
+      <AgentModules>
         {agentType === "Tree" ? (
           <SkillTree />
         ) : (
           <SkillNetwork />
         )}
       </AgentModules>
-      <AgentSelector isLoading={false} />
-      <AgentComparison isLoading={false} />
+      <AgentSelector />
+      <AgentComparison />
     </div>
   )
 }

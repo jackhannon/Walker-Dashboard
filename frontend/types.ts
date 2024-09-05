@@ -3,6 +3,13 @@ type Joint = {
   coordinate: [number, number]
 }
 
+export type Agent = {
+  name: string;
+  id: number;
+  description: string;
+  data_points: {speed: number, distance: number}[]
+};
+
 export type Frame = {
   hull: {
     angle: number,
