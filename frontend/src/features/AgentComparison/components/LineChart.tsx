@@ -8,7 +8,6 @@ import { useAgentStore } from '../../../store';
 
 const LineChart = withFetchState(() => {
   const agents = useAgentStore(state => state.agents);
-  console.log("agents", agents)
   const svgRef = useRef(null);
   const margin = { top: 20, right: 20, bottom: 35, left: 35 };
   const height = 350;
