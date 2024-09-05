@@ -7,7 +7,7 @@ import * as d3 from 'd3';
 import { Frame, Terrain } from "../../../../types"
 import EnvironmentMinimap from "./EnvironmentMinimap"
 import AgentParametersTab from "../../AgentParameters/components/AgentParametersTab"
-import withFetchState from "../../../HOC/FetchStateHOC"
+import withFetchState from "../../../components/FetchStateHOC"
 
 
 type Props = {

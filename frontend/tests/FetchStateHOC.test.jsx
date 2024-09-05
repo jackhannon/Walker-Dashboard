@@ -2,7 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { vi } from 'vitest';
 import { useAgentStore } from '../src/store'; // Adjust import path as necessary
-import withFetchState from '../src/HOC/FetchStateHOC'; // Adjust import path as necessary
+import withFetchState from '../src/components/FetchStateHOC'; // Adjust import path as necessary
 import MockComponent from './mockComponent'; // Adjust import path as necessary
 import { describe, it, expect } from 'vitest'; // Ensure using vitest for assertions
 

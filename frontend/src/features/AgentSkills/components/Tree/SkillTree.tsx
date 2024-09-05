@@ -4,7 +4,7 @@ import PerceptionLayer from './PerceptionLayer'
 import SkillLayer from './SkillLayer'
 import { motion } from 'framer-motion'
 import Trace from './Trace'
-import withFetchState from '../../../../HOC/FetchStateHOC'
+import withFetchState from '../../../../components/FetchStateHOC'
 type Props = {
   perceptorId?: number
   skillId?: number

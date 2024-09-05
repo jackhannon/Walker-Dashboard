@@ -1,7 +1,7 @@
 import React from 'react';
 import { useAgentStore } from '../store';
-import Disconnected from '../components/Disconnected';
-import Spinner from '../components/Spinner';
+import Disconnected from './Disconnected';
+import Spinner from './Spinner';
 
 const withFetchState = <P extends object>(WrappedComponent: React.ComponentType<P>) => {
   const WithFetchState: React.FC<P> = (props: P) => {

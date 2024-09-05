@@ -1,4 +1,4 @@
-import withFetchState from '../../../../HOC/FetchStateHOC'
+import withFetchState from '../../../../components/FetchStateHOC'
 import SkillStyles from '../../styles/SkillTreeStyles.module.css'
 import NetworkLayer from './NetworkLayer'
 import NetworkModule from './NetworkModule'
