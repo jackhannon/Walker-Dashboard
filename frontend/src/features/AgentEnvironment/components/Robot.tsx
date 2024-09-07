@@ -1,5 +1,4 @@
 import React from 'react'
-
 import Hull from './Hull'
 import { Frame } from '../../../../types'
 import Leg from './Leg'
@@ -13,12 +12,17 @@ const Robot: React.FC<Props> = ({frame}) => {
     <>
       <Hull coordinate={frame.hull.coordinate} angle={frame.hull.angle}/>
       <Leg 
+        hullCoordinate={frame.hull.coordinate}
+        hullAngle={frame.hull.angle}
         upperLegCoordinate={frame.leftLeg.hip.coordinate} 
         upperLegAngle={frame.leftLeg.hip.angle}
         lowerLegCoordinate={frame.leftLeg.knee.coordinate}
         lowerLegAngle={frame.leftLeg.knee.angle}
+
       />
       <Leg
+        hullCoordinate={frame.hull.coordinate}
+        hullAngle={frame.hull.angle}
         upperLegCoordinate={frame.rightLeg.hip.coordinate} 
         upperLegAngle={frame.rightLeg.hip.angle}
         lowerLegCoordinate={frame.rightLeg.knee.coordinate}
