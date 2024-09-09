@@ -7,7 +7,7 @@ import { walkData } from "../data/walkData.js";
 import { terrainData } from "../data/terrainData.js";
 
 function socketConfig() {
-  const SOCKET_PORT = Number(envConfig.SOCKET_PORT) || 3000;
+  const SOCKET_PORT = Number(envConfig.SOCKET_PORT) || 4000;
   const { Server } = require("socket.io");
   const io = new Server({
     cors: {
