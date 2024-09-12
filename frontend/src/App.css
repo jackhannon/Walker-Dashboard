@@ -46,10 +46,7 @@
 
 
 .disconnect {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
+  margin: auto;
   font-size: 2rem;
   color: var(--p-500)
 }

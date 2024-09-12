@@ -54,7 +54,7 @@ const AgentSelector = () => {
             </motion.div>
           )) 
         ) : (
-          <Disconnected message='Disconnected from socket'/>
+          <Disconnected message='Failed to connect'/>
         )}
       </Pagination>
     </div>
