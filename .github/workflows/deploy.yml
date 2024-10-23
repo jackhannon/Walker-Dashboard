@@ -17,7 +17,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: '16'
 
       - name: Install dependencies
         uses: bahmutov/npm-install@v1
@@ -29,9 +29,8 @@ jobs:
         env:
           VITE_API_URL: ${{ vars.VITE_API_URL }}
           VITE_SOCKET_URL: ${{ vars.VITE_SOCKET_URL }}
-        working-directory: ./frontend 
+        working-directory: ./frontend
         
-
       - name: Upload production-ready build files
         uses: actions/upload-artifact@v3
         with:
