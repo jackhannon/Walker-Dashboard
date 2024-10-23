@@ -74,7 +74,7 @@ export const useAgentStore = create<State>((set, get) => {
       set({ agents: agents });
 
       const connectSocket = new Promise<void>((resolve, reject) => {
-        socket = io(import.meta.env.VITE_SOCKET_URL || 'http://localhost:4000');
+        socket = io(import.meta.env.VITE_SOCKET_URL || 'https://walk-visualization-backend.fly.dev:4000');
   
         socket.on('connect', () => {
           console.log('Socket connected');
