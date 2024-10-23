@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || `https://walk-visualization-backend.fly.dev/
+  baseURL: import.meta.env.VITE_API_URL || `https://walk-visualization-backend.fly.dev
 `, 
   withCredentials: true
 })
