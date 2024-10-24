@@ -1,6 +1,6 @@
 # Walker-Dashboard
 
-
+This dashboard serves to demo and compare autonomous agents fitted for various task, in the current state, that is limited to an agent that attempts to walk bipedal.
 
 How to install and run: 
 
