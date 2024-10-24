@@ -78,6 +78,8 @@ export const useAgentStore = create<State>((set, get) => {
   
         socket.on('connect', () => {
           console.log('Socket connected');
+          set({error: null});
+
           resolve();
         });
   
