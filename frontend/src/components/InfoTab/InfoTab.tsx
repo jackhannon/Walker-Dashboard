@@ -84,7 +84,7 @@ const InfoTab: React.FC<Props> = ({togglePositionStyles, infoPositionStyles}) =>
               }}
             >
               The Agent modules make up the actual agent. Starting at with sensors, then perceptors, then a selection,
-              then skills, we reach a descision for the agents next action
+              then skills, we reach a decision for the agents next action
             </motion.p>
           </motion.div>
         )}
