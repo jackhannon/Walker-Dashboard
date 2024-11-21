@@ -74,6 +74,7 @@ const Environment: React.FC<Props> = withFetchState(({frame, terrain}) => {
     xExtent= d3.extent(terrainRef.current, d => d[0]);
     yExtent = d3.extent(terrainRef.current, d => d[1]);
 
+    // these ranges are based on the arbitrary values in the sample data
     xScale = d3.scaleLinear()
       .domain(xExtent as [number, number])
       .range([0, 92.86666666666667]);

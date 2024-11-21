@@ -7,7 +7,7 @@ const AgentComparison = () => {
   return (
     <div className={DashBoardStyles.agentComparisonContainer}>
       <div className={DashBoardStyles.label}>Agent Metric</div>
-      <InfoTab />
+      <InfoTab description='This is the metric'/>
       <DotPagination>
         <LineChart/>
       </DotPagination>

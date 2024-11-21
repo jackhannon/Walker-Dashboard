@@ -26,7 +26,7 @@ const AgentSelector = () => {
   return (
     <div className={DashBoardStyles.agentSelectorContainer}>
       <div className={DashBoardStyles.label}>Agent Selector</div>
-      <InfoTab />
+      <InfoTab description={"This is the agent selector"} />
       <Pagination handleChange={changeAgent}>
         {agents.length ? (
           agents.map((agent, index)=> (

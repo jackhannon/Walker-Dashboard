@@ -7,10 +7,10 @@ import { AnimatePresence, motion } from 'framer-motion'
 type Props = {
   togglePositionStyles?: string
   infoPositionStyles?: string
-  moduleInfo?: string
+  description: string
 }
 
-const InfoTab: React.FC<Props> = ({togglePositionStyles, infoPositionStyles}) => {
+const InfoTab: React.FC<Props> = ({description, togglePositionStyles, infoPositionStyles}) => {
   const [isHovered, setIsHovered] = useState<boolean>(false)
   return (
     <div onMouseLeave={() => setIsHovered(false)}>
@@ -83,8 +83,7 @@ const InfoTab: React.FC<Props> = ({togglePositionStyles, infoPositionStyles}) =>
                 opacity: 0
               }}
             >
-              The Agent modules make up the actual agent. Starting at with sensors, then perceptors, then a selection,
-              then skills, we reach a decision for the agents next action
+              {description}
             </motion.p>
           </motion.div>
         )}
